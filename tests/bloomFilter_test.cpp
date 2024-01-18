@@ -3,6 +3,6 @@
 
 TEST(BloomFilterTest, Getters) {
     BloomFilter bloomFilter(8, 1);
-    EXPECT_EQ(bloomFilter.SizeArray(), 8);
-    EXPECT_EQ(bloomFilter.NumHashFunctions(), 1);
+    EXPECT_EQ(bloomFilter.getSizeArray(), 8);
+    EXPECT_EQ(bloomFilter.getNumHashFunctions(), 1);
 }
