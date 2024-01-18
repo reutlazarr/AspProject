@@ -2,8 +2,7 @@
 #include<vector>
 
 // header for bloomFilter
-class BloomFilter
-{
+class BloomFilter {
 private:
     int sizeArray;
     int numHashFunctions;
@@ -14,7 +13,7 @@ public:
 
     void addUrl(const std::string& url);
     bool isBlacklisted(const std::string& url);
-    
+
     int getSizeArray();
     int getNumHashFunctions();
     std::vector<bool> getBitArray();
