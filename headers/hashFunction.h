@@ -2,5 +2,6 @@
 #include<functional>
 
 class HashFunction {
-    size_t operator()(const std::string& str) const;
+public:
+    size_t hash(const std::string& url) const;
 };
