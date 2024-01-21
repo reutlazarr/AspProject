@@ -9,6 +9,7 @@
 
 class HashFunction {
 public:
+    // get string, and return size_t after hashing the string
     size_t operator()(const std::string& str) const;
 };
 

@@ -14,17 +14,19 @@ https://github.com/google/googletest/archive/03597a01ee50ed
 
 enable_testing()
 set(SOURCE_FILES
-    src/calc.cpp # this is where the code we want to test
+    #src/calc.cpp # this is where the code we want to test
+    src/bloomFilter.cpp
+    src/hashFunction.cpp
 )
 
 set(TEST_FILES
     tests/test_main.cpp # this is the main for tests
-    tests/calc_test.cpp # this file contain the tests
+    #tests/calc_test.cpp # this file contain the tests
     tests/bloomFilter_test.cpp # this file contain the tests
     tests/hashFunction_test.cpp # this file contain the tests
 )
 
-add_executable(CalcTests ${TEST_FILES})
+add_executable(CalcTests ${TEST_FILES} ${SOURCE_FILES})
 
 # Link Google Test to the test executable
 target_link_libraries(CalcTests PRIVATE gtest gtest_main pthread)
