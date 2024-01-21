@@ -23,16 +23,20 @@ TEST(BloomFilterTest, Case1) {
 
 TEST(BloomFilterTest, Case2) {
     std::vector<HashFunction> hashFunctions2;
+    HashFunction hashFunc2;
+    hashFunctions2.push_back(hashFunc2);
     BloomFilter bloomFilter(8, 1, hashFunctions2);
     bloomFilter.addUrl("www.example.com0");
     EXPECT_TRUE(bloomFilter.isBlacklisted("www.example.com0"));
-    //EXPECT_FALSE(bloomFilter.isBlacklisted("www.example.com1"));
+    EXPECT_FALSE(bloomFilter.isBlacklisted("www.example.com1"));
 }
 
 TEST(BloomFilterTest, Case1_2) {
     std::vector<HashFunction> hashFunctions1_2;
+    HashFunction hashFunc1_2;
+    hashFunctions1_2.push_back(hashFunc1_2);
     BloomFilter bloomFilter(8, 2, hashFunctions1_2);
     bloomFilter.addUrl("www.example.com0");
     EXPECT_TRUE(bloomFilter.isBlacklisted("www.example.com0"));
-    //EXPECT_FALSE(bloomFilter.isBlacklisted("www.example.com1"));
+    EXPECT_FALSE(bloomFilter.isBlacklisted("www.example.com1"));
 }
