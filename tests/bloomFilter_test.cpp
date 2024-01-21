@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 #include "../headers/bloomFilter.h"
-//#include "../src/bloomFilter.cpp"
 
 // tests for bloomFilter
 TEST(BloomFilterTest, Getters) {

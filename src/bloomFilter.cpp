@@ -8,10 +8,12 @@ BloomFilter::BloomFilter(int sizeArray, int numHashFunctions) : bitArray(sizeArr
 
 void BloomFilter::addUrl(const std::string& url) {
     //implemmentation
+    return;
 }
 
 bool BloomFilter::isBlacklisted(const std::string& url) {
     //implemmentation
+    return false;
 }
 //getters
 int BloomFilter::getSizeArray() {
