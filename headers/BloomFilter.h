@@ -9,7 +9,6 @@ private:
     std::vector<bool> bitArray;
 public:
     BloomFilter(int sizeArray, int numHashFunctions);
-    ~BloomFilter();
 
     void addUrl(const std::string& url);
     bool isBlacklisted(const std::string& url);

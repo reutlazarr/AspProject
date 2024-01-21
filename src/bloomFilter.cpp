@@ -1,4 +1,4 @@
-#include "../headers/BloomFilter.h"
+#include "../headers/bloomFilter.h"
 
 // constractor
 BloomFilter::BloomFilter(int sizeArray, int numHashFunctions) : bitArray(sizeArray, false) {
