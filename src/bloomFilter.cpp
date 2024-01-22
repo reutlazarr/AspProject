@@ -1,11 +1,15 @@
-#include "../headers/bloomFilter.h"
+
+#include "../headers/IHashFunction.h"
+#include "../headers/HashFunction1.h"
+#include "../headers/HashFunction2.h"
+#include "../headers/BloomFilter.h"
 #include<iostream>
 
 // constractor
-BloomFilter::BloomFilter(int sizeArray, int numHashFunctions, std::vector<HashFunction> hashFunctions) : bitArray(sizeArray, false) {
+BloomFilter::BloomFilter(int sizeArray, int numHashFunctions, std::vector<std::unique_ptr<IHashFunction>> hashFunctions) 
+: bitArray(sizeArray, false), hashFunctions(std::move(hashFunctions)) {
     this->sizeArray = sizeArray;
     this->numHashFunctions = numHashFunctions;
-    this->hashFunctions = hashFunctions;
 }
 
 void BloomFilter::addUrl(const std::string& url) {
@@ -28,6 +32,8 @@ bool BloomFilter::isBlacklisted(const std::string& url) {
     }
     return true;  // All corresponding bits are set, might be blacklisted
 }
+
+
 //getters
 int BloomFilter::getSizeArray() {
     return sizeArray;
@@ -37,7 +43,7 @@ int BloomFilter::getNumHashFunctions() {
     return numHashFunctions;
 }
 
-std::vector<HashFunction> BloomFilter::getHashFunctions() {
+std::vector<IHashFunction> BloomFilter::getHashFunctions() {
     return hashFunctions;
 }
 std::vector<bool> BloomFilter::getBitArray() {
