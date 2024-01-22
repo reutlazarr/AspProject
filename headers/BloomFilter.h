@@ -12,13 +12,14 @@
 
 // header for bloomFilter
 class BloomFilter {
+
 private:
     int sizeArray;
     int numHashFunctions;
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
     std::vector<bool> bitArray;
-public:
 
+public:
     // constractor
     // get std::vector<std::unique_ptr<IHashFunction>>,
     // the number of hashFunctions in the vector, and the size of the array
