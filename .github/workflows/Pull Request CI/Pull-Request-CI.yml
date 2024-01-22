@@ -1,0 +1,21 @@
+name: Pull Request CI
+
+on:
+  pull_request:
+    branches: [ "main" ]
+#the missions of the file
+jobs:
+  #the name of the job
+   test:
+    runs-on: ubuntu-latest
+
+    #steps is a list of actions that the test job will perform.
+    steps:
+    #every dash is a step, an action
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Run tests
+      run: |
+        # Add commands to run tests from step 2
+   
