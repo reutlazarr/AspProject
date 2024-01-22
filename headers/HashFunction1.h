@@ -1,11 +1,15 @@
 // HashFunction1.h
+
 #ifndef HASH_FUNCTION_1_H
 #define HASH_FUNCTION_1_H
 
 #include "IHashFunction.h"
 
-class HashFunction_1 : public IHashFunction {
+// header for HashFunction1
+class HashFunction1 : public IHashFunction {
 public:
+    // get string,
+    // return size_t after hashing the string
     size_t operator()(const std::string& str) const override;
 };
 
