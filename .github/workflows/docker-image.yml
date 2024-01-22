@@ -1,16 +1,24 @@
+# The name of the GitHub Actions workflow
 name: Docker Image CI
 
+# The workflow will run when there is a pull request into the main branch
 on:
   pull_request:
     branches: [ "main" ]
-
+    
+#Defined the actions of the file
 jobs:
-
   build:
-
+    #The job will run on an ubuntu-latest virtual machine.
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+    # The name of the step
     - name: Build the Docker image
+      # Contains the actual command to build the Docker image
+      # . : The build context is the current directory
+      # --file Dockerfile: Specifies the Dockerfile to use for building the image
+      # --tag my-image-name:$(date +%s): Tags the Docker image with a name (my-image-name) and a timestamp (the result of $(date +%s)
+      #  which is the current Unix timestamp). This can be useful to ensure a unique tag for each build.
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
