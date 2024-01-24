@@ -8,4 +8,9 @@ size_t HashFunction1::operator()(const std::string& str) const {
     return std::hash<std::string>{}(str);
 }
 
+// clone the object
+std::unique_ptr<IHashFunction> HashFunction1::clone() const {
+    return std::make_unique<HashFunction1>(*this);
+}
+
 
