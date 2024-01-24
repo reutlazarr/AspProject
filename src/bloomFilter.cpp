@@ -4,7 +4,7 @@
 #include "../headers/HashFunction1.h"
 #include "../headers/HashFunction2.h"
 #include "../headers/BloomFilter.h"
-#include <iostream>
+
 
 // constractor
 BloomFilter::BloomFilter(int sizeArray, std::vector<std::unique_ptr<IHashFunction>> hashFunctions) 
