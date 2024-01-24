@@ -15,30 +15,18 @@ class BloomFilter {
 
 private:
     int sizeArray;
-    int numHashFunctions;
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
     std::vector<bool> bitArray;
 
 public:
     // constractor
-    // get std::vector<std::unique_ptr<IHashFunction>>,
-    // the number of hashFunctions in the vector, and the size of the array
-    BloomFilter(int sizeArray, int numHashFunctions, std::vector<std::unique_ptr<IHashFunction>> hashFunctions);
-
-    // methodes
-
-    // get string
-    void addUrl(const std::string& url); // add url to the bloomFilter
-
-    // get string
-    // return bool value the string is in the bloomFilter
-    bool isBlacklisted(const std::string& url); // check if url is in the bloomFilter
+    // get std::vector<std::unique_ptr<IHashFunction>>, and the size of the array
+    BloomFilter(int sizeArray, std::vector<std::unique_ptr<IHashFunction>> hashFunctions);
 
     // getters
     int getSizeArray();
-    int getNumHashFunctions();
-    std::vector<IHashFunction*> getHashFunctions();
-    std::vector<bool> getBitArray();
+    const std::vector<std::unique_ptr<IHashFunction>>& getHashFunctions() const;
+    std::vector<bool>& getBitArray();
 };
 
 #endif // BLOOM_FILTER_H
