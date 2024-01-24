@@ -25,7 +25,6 @@ public:
 
     // getters
     int getSizeArray();
-    int getNumHashFunctions();
     std::vector<IHashFunction*> getHashFunctions();
     std::vector<bool> getBitArray();
 };
