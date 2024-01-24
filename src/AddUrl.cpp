@@ -20,15 +20,15 @@ bool AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
 }
 
 // Add a new URL to the blacklist
-void AddUrl::addUrlToRealList(std::vector<std::string>& blacklistedUrls, const std::string& url) {
+void AddUrl::addUrlToRealList(RealBlackList& realBlackList, const std::string& url) {
     // Use std::find to check if the URL is already in the blacklist
     // Returns an iterator pointing to the first occurrence of the specified value in the range
     // or the end iterator if the value is not found.
-    auto check = std::find(blacklistedUrls.begin(), blacklistedUrls.end(), url);
+    auto check = std::find(realBlackList.getRealList().begin(), realBlackList.getRealList().end(), url);
     // Check if the URL was not found
-    if (check == blacklistedUrls.end()) {
+    if (check == realBlackList.getRealList().end()) {
         // URL is not in the blacklist, so add it
-        blacklistedUrls.push_back(url);
+        realBlackList.getRealList().push_back(url);
         std::cout << "URL added to the blacklist: " << url << std::endl;
     } 
     else {
@@ -36,3 +36,4 @@ void AddUrl::addUrlToRealList(std::vector<std::string>& blacklistedUrls, const s
         std::cout << "URL is already in the blacklist: " << url << std::endl;
     }
 }
+

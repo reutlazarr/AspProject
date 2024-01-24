@@ -1,4 +1,3 @@
-
 #include "ICommand.h"
 #include "BloomFilter.h"  
 
