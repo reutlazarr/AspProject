@@ -8,8 +8,6 @@
 #include "../headers/HashFunction2.h"
 #include<iostream>
 
-
-
 // Test for the createBloomFilter method
 TEST(BloomFilterManagerTest, CreateBloomFilter) {
     Menu* menu = new Menu();
@@ -23,10 +21,27 @@ TEST(BloomFilterManagerTest, CreateBloomFilter) {
     std::cin.rdbuf(input.rdbuf()); // replaces the stream buffer of std::cin with the stream buffer of the input stringstream
 
     BloomFilter bloomFilter = bloomFilterManager.createBloomFilter();
-
-    std::cin.rdbuf(originalInput); // restore the original state
-
+    //std::cin.rdbuf(originalInput); // restore the original state
     EXPECT_EQ(8, bloomFilter.getSizeArray());
-    
     delete menu;
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+TEST(BloomFilterManagerTest, FailCreateBloomFilter) {
+    Menu* menu = new Menu();
+    std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap;
+    hashFunctionsMap[2] = std::make_unique<HashFunction2>();
+    BloomFilterManager bloomFilterManager(menu, std::move(hashFunctionsMap));
+
+    std::istringstream input("8 2 \n"); // string simulates the user input
+    std::streambuf* originalInput = std::cin.rdbuf(); // stores the original stream buffer of std::cin in a pointer
+    std::cin.rdbuf(input.rdbuf()); // replaces the stream buffer of std::cin with the stream buffer of the input stringstream
+
+    BloomFilter bloomFilter = bloomFilterManager.createBloomFilter();
+    //std::cin.rdbuf(originalInput); // restore the original state
+    EXPECT_EQ(bloomFilter.getHashFunctions().size(), 1);
+    delete menu;
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
