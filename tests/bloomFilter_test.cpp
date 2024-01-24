@@ -2,15 +2,12 @@
 
 #include <gtest/gtest.h>
 #include <memory>
-#include "../headers/IHashFunction.h"
 #include "../headers/HashFunction1.h"
 #include "../headers/HashFunction2.h"
 #include "../headers/BloomFilter.h"
 
-#include<iostream>
 
-
-// tests for bloomFilter
+// tests for bloomFilter getters
 TEST(BloomFilterTest, Getters) {
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions; //vector
     std::unique_ptr<HashFunction1> hashFunction1 = std::make_unique<HashFunction1>(); //hashFunction1
@@ -25,7 +22,7 @@ TEST(BloomFilterTest, Getters) {
     EXPECT_EQ(bloomFilter.getHashFunctions()[0].get(),test1);
 }
 
-// test for HashFunction1
+// test for HashFunction1 in bloomFilter
 TEST(BloomFilterTest, Case1) {
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
     hashFunctions.push_back(std::make_unique<HashFunction1>()); // add HashFunction1 to the vector of hashFunctions
@@ -36,7 +33,7 @@ TEST(BloomFilterTest, Case1) {
     EXPECT_FALSE(bloomFilter.isBlacklisted("www.example.com1111")); // not in the bloomFilter
 }
 
-// test for HashFunction2
+// test for HashFunction2 in bloomFilter
 TEST(BloomFilterTest, Case2) {
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
     std::unique_ptr<HashFunction2> hashFunction2 = std::make_unique<HashFunction2>(); //hashFunction2
@@ -52,7 +49,7 @@ TEST(BloomFilterTest, Case2) {
     EXPECT_EQ(bloomFilter.getHashFunctions()[0].get(),test2);
 }
 
-// test for both HashFunction1 and HashFunction2
+// test for both HashFunction1 and HashFunction2 in bloomFilter
 TEST(BloomFilterTest, Case1_2) {
     // input- 8 1 2
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
