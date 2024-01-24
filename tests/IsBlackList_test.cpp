@@ -8,7 +8,7 @@ TEST(IsBlackListTest, IsBlackListCommand) {
     hashFunctions.push_back(std::make_unique<HashFunction1>()); 
     BloomFilter bloomFilter(8, std::move(hashFunctions));
     AddUrl addUrlCommand;
-    ASSERT_TRUE(addUrlCommand.execute(bloomFilter, "www.example.com0"));
+    EXPECT_TRUE(addUrlCommand.execute(bloomFilter, "www.example.com0"));
     IsBlacklist isBlackListCommand;
     // Check if url is in the bloomFilter
     EXPECT_TRUE(isBlackListCommand.execute(bloomFilter, "www.example.com0"));
