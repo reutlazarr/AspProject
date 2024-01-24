@@ -13,8 +13,8 @@ TEST(AddUrlTest, AddUrlCommand) {
     bool addedSuccessfully = addUrlCommand.execute(bloomFilter, "www.example.com0");
     // Check if the URL was added successfully
     ASSERT_TRUE(addedSuccessfully);
-    std::vector<std::string> blacklistedUrls;
-    addUrlCommand.addUrlToRealList(blacklistedUrls, "www.example.com0");
-    ASSERT_EQ(blacklistedUrls.size(), 1);
+    std::vector<std::string> realBlackList;
+    addUrlCommand.addUrlToRealList(realBlackList, "www.example.com0");
+    ASSERT_EQ(realBlackList.size(), 1);
     }
     
