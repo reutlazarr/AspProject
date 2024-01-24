@@ -4,6 +4,13 @@
 #include "../headers/Menu.h"
 
 Menu menu;
+// tests for nextCommand in menu
+TEST(MenuTest, NextCommand) {
+    std::stringstream input("1 example.com");
+    auto command = menu.executeCommand(input); // check if the returned pair is as expected
+    // check if the returned pair is as expectedcheck if the returned command is not negative
+    EXPECT_GE(command.first, 0);
+}
 // tests for displayError in menu
 TEST(MenuTest, DisplayError) {
     testing::internal::CaptureStdout();  // Capture stdout
@@ -15,11 +22,4 @@ TEST(MenuTest, DisplayError) {
     std::cout << "Actual stderr: " << stderr_output << std::endl;  // Print actual stderr for debugging
     // check if the printed output contains the expected error message
     EXPECT_TRUE(stderr_output.find("Error: Test Error Message") != std::string::npos);
-}
-
-// tests for nextCommand in menu
-TEST(MenuTest, NextCommand) {
-    auto command = menu.nextCommand(); // check if the returned pair is as expected
-    // check if the returned pair is as expectedcheck if the returned command is not negative
-    EXPECT_GE(command.first, 0);
 }
