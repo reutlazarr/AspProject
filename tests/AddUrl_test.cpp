@@ -12,6 +12,6 @@ TEST(AddUrlTest, AddUrlCommand) {
     AddUrl addUrlCommand;
     bool addedSuccessfully = addUrlCommand.execute(bloomFilter, "www.example.com0");
     // Check if the URL was added successfully
-    ASSERT_TRUE(addedSuccessfully);
+    EXPECT_TRUE(addedSuccessfully);
     }
     

@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../headers/IsBlackList.h"
+#include "../headers/RealBlackList.h"
 #include "../headers/AddUrl.h"
 
 TEST(IsBlackListTest, IsBlackListCommand) {
@@ -9,9 +10,13 @@ TEST(IsBlackListTest, IsBlackListCommand) {
     BloomFilter bloomFilter(8, std::move(hashFunctions));
     AddUrl addUrlCommand;
     EXPECT_TRUE(addUrlCommand.execute(bloomFilter, "www.example.com0"));
-    IsBlacklist isBlackListCommand;
+    addUrlCommand.execute(bloomFilter, "www.example.com111");
+    IsBlackList isBlackListCommand;
     // Check if url is in the bloomFilter
     EXPECT_TRUE(isBlackListCommand.execute(bloomFilter, "www.example.com0"));
     // Check if url is not in the bloomFilter
-    EXPECT_FALSE(isBlackListCommand.execute(bloomFilter,"www.example.com1111")); 
+    EXPECT_FALSE(isBlackListCommand.execute(bloomFilter,"www.example.com1111"));
+    RealBlackList realBlackList({"www.example.com0","www.example.com111","www.example.com11111"});
+    EXPECT_TRUE(isBlackListCommand.compareResults("www.example.com11",realBlackList ,bloomFilter));
+    EXPECT_TRUE(isBlackListCommand.compareResults("www.example.com111",realBlackList ,bloomFilter));
 }
