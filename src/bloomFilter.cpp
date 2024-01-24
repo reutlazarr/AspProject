@@ -21,6 +21,6 @@ const std::vector<std::unique_ptr<IHashFunction>>& BloomFilter::getHashFunctions
     return hashFunctions;
 }
 
-std::vector<bool> BloomFilter::getBitArray() {
+std::vector<bool>& BloomFilter::getBitArray() {
     return bitArray;
 }

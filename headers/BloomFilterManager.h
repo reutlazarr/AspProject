@@ -2,15 +2,19 @@
 
 #include <map>
 #include <vector>
-
-#include "BloomFilter.h"
+#include <set>
+#include <memory>
+#include <sstream>
+#include "Menu.h"
 #include "IHashFunction.h"
+#include "BloomFilter.h"
 
 class BloomFilterManager {
 
 private:
+    Menu* menu;
     std::map<int, std::unique_ptr<IHashFunction>> hashFunctionMap;
-    BloomFilter bloomFilter;
+    //BloomFilter bloomFilter;
 
     int readArraySize(std::istream& input) const;
     std::vector<std::unique_ptr<IHashFunction>> readHashFunctions(std::istream& input,
@@ -20,7 +24,6 @@ private:
 
 public:
     // constractor
-    BloomFilterManager(std::map<int, std::unique_ptr<IHashFunction>> hashFunctionMap);
+    BloomFilterManager(Menu* menu, std::map<int, std::unique_ptr<IHashFunction>> hashFunctionMap);
     BloomFilter createBloomFilter(); // create bloomFilter 
-
 };
