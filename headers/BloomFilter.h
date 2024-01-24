@@ -26,7 +26,7 @@ public:
     // getters
     int getSizeArray();
     const std::vector<std::unique_ptr<IHashFunction>>& getHashFunctions() const;
-    std::vector<bool> getBitArray();
+    std::vector<bool>& getBitArray();
 };
 
 #endif // BLOOM_FILTER_H

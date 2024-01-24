@@ -9,12 +9,9 @@ bool AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
         size_t index = hashValue % bloomFilter.getBitArray().size();
         // add url to bloomFilter by making the index number to true
         bloomFilter.getBitArray()[index] = true;
-        // // Obtain a reference to the bit at index 
-        // const bool& referenceToBit = bloomFilter.getBitArray()[index];
-        // // Modify the bit through the reference
-        // referenceToBit = true;
         std::cout << "the index that become 1 is: " << index << std::endl;
-        return true;
+        std::cout << bloomFilter.getBitArray()[index]<< std::endl;
+        return bloomFilter.getBitArray()[index];
     }
 
     return false;
