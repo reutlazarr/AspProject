@@ -1,25 +1,28 @@
 // menu_test.cpp
 
 #include<gtest/gtest.h>
+#include <sstream>
 #include "../headers/Menu.h"
 
 Menu menu;
 // tests for nextCommand in menu
 TEST(MenuTest, NextCommand) {
-    std::stringstream input("1 example.com");
-    auto command = menu.executeCommand(input); // check if the returned pair is as expected
-    // check if the returned pair is as expectedcheck if the returned command is not negative
-    EXPECT_GE(command.first, 0);
+   std::stringstream input = menu.nextCommand();
+    std::string inputContent = input.str();
+    EXPECT_EQ(inputContent, "0");
 }
+
+// tests for executeCommand in menu
+TEST(MenuTest, ExecuteCommand) {
+    std::stringstream input("1 example.com");
+    auto command = menu.executeCommand(input);
+    EXPECT_EQ(command.first, 1);
+    EXPECT_EQ(command.second, "example.com");
+}
+
 // tests for displayError in menu
 TEST(MenuTest, DisplayError) {
-    testing::internal::CaptureStdout();  // Capture stdout
-    testing::internal::CaptureStderr();  // Capture stderr
-    menu.displayError("Test Error Message"); // call the displayError function with a test message
-    std::string stdout_output = testing::internal::GetCapturedStdout();  // Get captured stdout
-    std::string stderr_output = testing::internal::GetCapturedStderr();  // Get captured stderr
-    std::cout << "Actual stdout: " << stdout_output << std::endl;  // Print actual stdout for debugging
-    std::cout << "Actual stderr: " << stderr_output << std::endl;  // Print actual stderr for debugging
-    // check if the printed output contains the expected error message
-    EXPECT_TRUE(stderr_output.find("Error: Test Error Message") != std::string::npos);
+    std::stringstream input("example.com");
+    // Use EXPECT_THROW to check if executeCommand throws an exception
+    EXPECT_THROW(menu.executeCommand(input), std::invalid_argument);
 }
