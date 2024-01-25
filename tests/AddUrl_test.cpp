@@ -9,9 +9,10 @@ TEST(AddUrlTest, AddUrlCommand) {
     hashFunctions.push_back(std::make_unique<HashFunction1>()); 
     // BloomFilter Creation
     BloomFilter bloomFilter(8, std::move(hashFunctions));
-    AddUrl addUrlCommand;
-    bool addedSuccessfully = addUrlCommand.execute(bloomFilter, "www.example.com0");
+    RealBlackList realBlackList({"www.example.com0"});
+    AddUrl addUrlCommand(realBlackList);
+    std::string addedSuccessfully = addUrlCommand.execute(bloomFilter, "www.example.com0");
     // Check if the URL was added successfully
-    EXPECT_TRUE(addedSuccessfully);
+    EXPECT_EQ(addedSuccessfully, "true");
     }
     
