@@ -10,7 +10,7 @@ class RealBlackList {
     public:
     // constractor
     RealBlackList(std::vector<std::string> realBlackList);
-
+    
     // getters
     std::vector<std::string>& getRealList();
 
