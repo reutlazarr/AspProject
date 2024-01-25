@@ -4,7 +4,7 @@
 #include <algorithm> 
 
 // Constructor
-AddUrl::AddUrl(RealBlackList& initialList) : ICommand(initialList) {
+AddUrl::AddUrl(RealBlackList& realBlackList) : ICommand(realBlackList) {
 }
 
 // Implementation of execute method
