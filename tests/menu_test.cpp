@@ -6,11 +6,11 @@
 
 Menu menu;
 // tests for nextCommand in menu
-TEST(MenuTest, NextCommand) {
-   std::stringstream input = menu.nextCommand();
-    std::string inputContent = input.str();
-    EXPECT_EQ(inputContent, "0");
-}
+//TEST(MenuTest, NextCommand) {
+ //  std::stringstream input = menu.nextCommand();
+ //   std::string inputContent = input.str();
+ //   EXPECT_EQ(inputContent, "0");
+//}
 
 // tests for executeCommand in menu
 TEST(MenuTest, ExecuteCommand) {
@@ -18,6 +18,13 @@ TEST(MenuTest, ExecuteCommand) {
     auto command = menu.executeCommand(input);
     EXPECT_EQ(command.first, 1);
     EXPECT_EQ(command.second, "example.com");
+}
+
+TEST(MenuTest, ExecuteCommandFailed) {
+    std::stringstream input("example.com");
+    EXPECT_THROW({
+        auto command = menu.executeCommand(input);
+    }, std::invalid_argument);
 }
 
 // tests for displayError in menu

@@ -8,10 +8,10 @@
 #include <vector>
 #include <limits>
 
-// constractor
-CheckInput::CheckInput(std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap) : hashFunctionsMap(std::move(hashFunctionsMap)) {
+// setter
+void CheckInput::setHashFunctionsMap(std::map<int, std::unique_ptr<IHashFunction>> newHashFunctionsMap) {
+    hashFunctionsMap = std::move(newHashFunctionsMap);
 }
-
 // get the user input
 // return true if the input not as format: {int, string}, e.g not 1 "exempal.com"
 // return false otherwise
