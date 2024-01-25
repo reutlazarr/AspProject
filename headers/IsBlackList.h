@@ -10,10 +10,11 @@ class IsBlackList : public ICommand {
 //     RealBlackList& realBlackListRef;  // Move this member variable to private
 
 public:
-    IsBlackList(RealBlackList& initialList);
+    IsBlackList(RealBlackList& realBlackList);
 
     // Implementing the execute method from ICommand interface
-    std::string execute(BloomFilter& bloomFilter, const std::string& url) override;
+    // Check if the URL is found both in bloomFilter and in the realBlackList
+    void execute(BloomFilter& bloomFilter, const std::string& url) override;
 
     std::string compareResults(const std::string& url, BloomFilter& bloomFilter);
 };
