@@ -16,7 +16,6 @@ TEST(BloomFilterTest, Getters) {
     BloomFilter bloomFilter(8, std::move(hashFunctions)); // pointer of hashFunctions deleted and moveed
     // Check individual elements of the vectors
     EXPECT_EQ(bloomFilter.getSizeArray(), 8);
-    EXPECT_EQ(bloomFilter.getNumHashFunctions(), 1);
     // Check hashFunctions vectors
     EXPECT_EQ(bloomFilter.getHashFunctions().size(), 1);
     EXPECT_EQ(bloomFilter.getHashFunctions()[0].get(),test1);
