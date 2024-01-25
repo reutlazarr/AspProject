@@ -3,8 +3,13 @@
  // Include the <algorithm> header for std::find
 #include <algorithm> 
 
+// Constructor
+AddUrl::AddUrl(RealBlackList& initialList) : ICommand(initialList) {
+}
+
 // Implementation of execute method
-bool AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
+// Add Url to the BloomFilter
+std::string AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
     // Loop over all the hashFunctions
     for (auto& hashFunction : bloomFilter.getHashFunctions()) {
         size_t hashValue = (*hashFunction)(url);
@@ -13,13 +18,14 @@ bool AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
         bloomFilter.getBitArray()[index] = true;
         std::cout << "the index that become 1 is: " << index << std::endl;
         std::cout << bloomFilter.getBitArray()[index]<< std::endl;
-        return bloomFilter.getBitArray()[index];
+        std::string resultAsString = (bloomFilter.getBitArray()[index] ? "true" : "false");
+        return resultAsString;
     }
 
-    return false;
+    return "false";
 }
 
-// Add a new URL to the blacklist
+// Add a new URL to the  real black list
 void AddUrl::addUrlToRealList(RealBlackList& realBlackList, const std::string& url) {
     // Use std::find to check if the URL is already in the blacklist
     // Returns an iterator pointing to the first occurrence of the specified value in the range
