@@ -4,42 +4,37 @@
 #include <algorithm> 
 
 // Constructor
-AddUrl::AddUrl(RealBlackList& initialList) : ICommand(initialList) {
+AddUrl::AddUrl(RealBlackList& realBlackList) : ICommand(realBlackList) {
 }
 
 // Implementation of execute method
 // Add Url to the BloomFilter
-std::string AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
+void AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
     // Loop over all the hashFunctions
     for (auto& hashFunction : bloomFilter.getHashFunctions()) {
         size_t hashValue = (*hashFunction)(url);
         size_t index = hashValue % bloomFilter.getBitArray().size();
         // Add url to bloomFilter by making the index number to true
         bloomFilter.getBitArray()[index] = true;
-        std::cout << "the index that become 1 is: " << index << std::endl;
         std::cout << bloomFilter.getBitArray()[index]<< std::endl;
         std::string resultAsString = (bloomFilter.getBitArray()[index] ? "true" : "false");
-        return resultAsString;
+        std::cout << resultAsString;
     }
 
-    return "false";
+    std::cout << "false";
 }
 
-// Add a new URL to the  real black list
-void AddUrl::addUrlToRealList(RealBlackList& realBlackList, const std::string& url) {
+
+// Add a new URL to the real black list
+void AddUrl::addUrlToRealList(const std::string& url) {
     // Use std::find to check if the URL is already in the blacklist
-    // Returns an iterator pointing to the first occurrence of the specified value in the range
-    // or the end iterator if the value is not found.
-    auto check = std::find(realBlackList.getRealList().begin(), realBlackList.getRealList().end(), url);
+    auto check = std::find(realBlackListRef.getRealList().begin(), realBlackListRef.getRealList().end(), url);
+
     // Check if the URL was not found
-    if (check == realBlackList.getRealList().end()) {
+    if (check == realBlackListRef.getRealList().end()) {
         // URL is not in the blacklist, so add it
-        realBlackList.getRealList().push_back(url);
-        std::cout << "URL added to the blacklist: " << url << std::endl;
-    } 
-    else {
+        realBlackListRef.getRealList().push_back(url); //URL added to the blacklist
+    } else {
         // URL is already in the blacklist
-        std::cout << "URL is already in the blacklist: " << url << std::endl;
     }
 }
-
