@@ -1,3 +1,7 @@
+// AddUrl.h
+
+#ifndef ADDURL_H
+#define ADDURL_H
 
 #include "ICommand.h"
 #include "BloomFilter.h" 
@@ -12,3 +16,5 @@ public:
     // Add a new URL to the blacklist
     void addUrlToRealList(RealBlackList& realBlackList, const std::string& url);
 };
+
+#endif // ADDURL_H
