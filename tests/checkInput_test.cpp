@@ -26,6 +26,10 @@ TEST(CheckInputTest, ExecuteCommandInvalidInput) {
 
     bool result = checkInput.checkExecuteCommand(input);
     EXPECT_TRUE(result);
+
+    input.str("2");
+    result = checkInput.checkExecuteCommand(input);
+    EXPECT_TRUE(result);
 }
 
 TEST(CheckInputTest, ArraySizeValidInput) {
@@ -36,7 +40,7 @@ TEST(CheckInputTest, ArraySizeValidInput) {
     std::stringstream input("5");
 
     bool result = checkInput.checkArraySize(input);
-    EXPECT_TRUE(result);
+    EXPECT_FALSE(result);
 }
 
 TEST(CheckInputTest, ArraySizeInvalidInput) {
@@ -47,5 +51,38 @@ TEST(CheckInputTest, ArraySizeInvalidInput) {
     std::stringstream input("invalid_input");
 
     bool result = checkInput.checkArraySize(input);
+    EXPECT_TRUE(result);
+
+    input.str("0");
+    result = checkInput.checkArraySize(input);
+    EXPECT_TRUE(result);
+}
+TEST(CheckInputTest, HashFunctionsValidInput) {
+    std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap;
+    hashFunctionsMap[1] = std::make_unique<HashFunction1>();
+    hashFunctionsMap[2] = std::make_unique<HashFunction2>();
+    CheckInput checkInput(std::move(hashFunctionsMap));
+    std::stringstream input("1 2");
+
+    bool result = checkInput.checkHashFunctions(input);
     EXPECT_FALSE(result);
+
+    input.str("");
+    result = checkInput.checkHashFunctions(input);
+    EXPECT_FALSE(result);
+}
+
+TEST(CheckInputTest, HashFunctionsInvalidInput) {
+    std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap;
+    hashFunctionsMap[1] = std::make_unique<HashFunction1>();
+    hashFunctionsMap[2] = std::make_unique<HashFunction2>();
+    CheckInput checkInput(std::move(hashFunctionsMap));
+    std::stringstream input("invalid_input");
+
+    bool result = checkInput.checkHashFunctions(input);
+    EXPECT_TRUE(result);
+
+    input.str("5");
+    result = checkInput.checkHashFunctions(input);
+    EXPECT_TRUE(result);
 }
