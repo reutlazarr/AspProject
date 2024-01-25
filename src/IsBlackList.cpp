@@ -10,7 +10,7 @@ IsBlackList::IsBlackList(RealBlackList& initialList) : ICommand(initialList) {
 
 // IsBlacklist class implementing ICommand interface
 // Check if the url is found in the bloomFilter
-std::string IsBlackList::execute(BloomFilter& bloomFilter, const std::string& url) {
+void IsBlackList::execute(BloomFilter& bloomFilter, const std::string& url) {
     // Loop over all the hashFunctions
     for (auto& hashFunction : bloomFilter.getHashFunctions()) {
         size_t hashValue = (*hashFunction)(url); // do hash to url and get it's value
@@ -19,8 +19,7 @@ std::string IsBlackList::execute(BloomFilter& bloomFilter, const std::string& ur
         // Check the number index in bloomFilter
         if (!(bloomFilter.getBitArray()[index])) {
             // If any corresponding bit is not set, it's definitely not blacklisted
-            std::cout<<"the result is:"<<"false";
-            return "false";  
+            std::cout << "false";
             //execute over
         }
     }
@@ -30,8 +29,7 @@ std::string IsBlackList::execute(BloomFilter& bloomFilter, const std::string& ur
 
     // The final result: "true" + result from compareResults (true/ false)
     std::string finalResult = firstResult + " "+ compareResultsStr;
-    std::cout<<"the result is:"<<finalResult;
-    return finalResult;
+    std::cout << finalResult;
 
 }
 
