@@ -5,10 +5,16 @@
 #include "RealBlackList.h"
 
 class IsBlackList : public ICommand {
-public:
-    // Implementing the execute method from ICommand interface
-    bool execute(BloomFilter& bloomFilter, const std::string& url) override;
 
-    bool compareResults(const std::string& url, RealBlackList& realBlackList, BloomFilter& bloomFilter);
+// private:
+//     RealBlackList& realBlackListRef;  // Move this member variable to private
+
+public:
+    IsBlackList(RealBlackList& initialList);
+
+    // Implementing the execute method from ICommand interface
+    std::string execute(BloomFilter& bloomFilter, const std::string& url) override;
+
+    std::string compareResults(const std::string& url, BloomFilter& bloomFilter);
 };
 #endif // IS_BLACKLIST_H
