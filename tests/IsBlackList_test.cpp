@@ -12,13 +12,10 @@ TEST(IsBlackListTest, IsBlackListCommand) {
     RealBlackList realBlackList({""});
     AddUrl addUrlCommand(realBlackList);
     //every new url will store in the RealList and in the bloomFilter
-    addUrlCommand.addUrlToRealList("www.example.com0");
     addUrlCommand.execute(bloomFilter, "www.example.com0");
 
-    addUrlCommand.addUrlToRealList("www.example.com111");
     addUrlCommand.execute(bloomFilter, "www.example.com111");
 
-    addUrlCommand.addUrlToRealList("www.example.com11111");
     addUrlCommand.execute(bloomFilter, "www.example.com11111");
     IsBlackList isBlackListCommand(realBlackList);
 

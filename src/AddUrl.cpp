@@ -10,6 +10,7 @@ AddUrl::AddUrl(RealBlackList& realBlackList) : ICommand(realBlackList) {
 // Implementation of execute method
 // Add Url to the BloomFilter
 void AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
+    addUrlToRealList(url);
     // Loop over all the hashFunctions
     for (auto& hashFunction : bloomFilter.getHashFunctions()) {
         size_t hashValue = (*hashFunction)(url);
