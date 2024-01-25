@@ -13,6 +13,11 @@ TEST(IsBlackListTest, IsBlackListCommand) {
     EXPECT_EQ(addUrlCommand.execute(bloomFilter, "www.example.com0"), "true");
     addUrlCommand.execute(bloomFilter, "www.example.com111");
     IsBlackList isBlackListCommand(realBlackList);
+    std::string result = isBlackListCommand.execute(bloomFilter, "www.example.com111");
+    std::cout<<"the reault is"<<result;
+    EXPECT_EQ(result, "true true");
+    
+
     // Check if url is in the bloomFilter
     //EXPECT_TRUE(isBlackListCommand.execute(bloomFilter, "www.example.com0"));
     // Check if url is not in the bloomFilter

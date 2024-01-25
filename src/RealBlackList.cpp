@@ -18,4 +18,4 @@ bool RealBlackList::isUrlInBlackList(const std::string& url) const {
     
     // Return true if the URL is found, false otherwise
     return check != realBlackList.end();
-}
+}  
