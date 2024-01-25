@@ -15,7 +15,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       
-    - name: Run tests
+    - name: Run tests from gtest
+      # Add commands to run tests from step 2
       run: |
-        # Add commands to run tests from step 2
+        cmake -B build -S .
+        cmake --build build
+        cd /build
+        ctest --test-dir build --output-on-failure
+
    
