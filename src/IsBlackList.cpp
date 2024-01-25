@@ -3,7 +3,7 @@
 #include <iostream>
 
 // Constructor
-IsBlackList::IsBlackList(RealBlackList& initialList) : ICommand(initialList) {
+IsBlackList::IsBlackList(RealBlackList& realBlackList) : ICommand(realBlackList) {
 }
 
 // IsBlacklist class implementing ICommand interface
