@@ -2,6 +2,7 @@
 #include "ICommand.h"
 #include "BloomFilter.h" 
 #include "RealBlackList.h"
+#include<string>
 
 class AddUrl : public ICommand {
 public:

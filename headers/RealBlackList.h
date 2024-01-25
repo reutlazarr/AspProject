@@ -2,6 +2,7 @@
 #define REAL_BLACK_LIST_H
 #include <string>
 #include <vector>
+#include <memory>
 
 class RealBlackList {
     private:
