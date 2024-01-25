@@ -4,6 +4,7 @@
 #include "ICommand.h"
 #include "Menu.h"
 #include "RealBlackList.h"
+#include <map>
 
 
 // header for initialize
@@ -30,5 +31,5 @@ public:
     
     const std::map<int, std::unique_ptr<IHashFunction>>& getHashFunctions() const; // return map of hash functions
     
-    const menu& getMenu() const; // get the menu
+    const Menu& getMenu() const; // get the menu
 };

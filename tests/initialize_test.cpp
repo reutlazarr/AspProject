@@ -12,7 +12,7 @@ TEST(Initialize, SeeterInitialized) {
     // test the setters
     EXPECT_FALSE(initialize.getCommands().empty());
     EXPECT_FALSE(initialize.getHashFunctions().empty());
-    EXPECT_NE(nullptr, initialize.getMenu());
+    EXPECT_NE(&initialize.getMenu(), nullptr);
 
     // test initializeCommands
     const auto& commands = initialize.getCommands();
