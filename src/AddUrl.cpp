@@ -16,12 +16,7 @@ void AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
         size_t index = hashValue % bloomFilter.getBitArray().size();
         // Add url to bloomFilter by making the index number to true
         bloomFilter.getBitArray()[index] = true;
-        std::cout << bloomFilter.getBitArray()[index]<< std::endl;
-        std::string resultAsString = (bloomFilter.getBitArray()[index] ? "true" : "false");
-        std::cout << resultAsString;
     }
-
-    std::cout << "false";
 }
 
 
