@@ -5,8 +5,6 @@
 // Constructor
 IsBlackList::IsBlackList(RealBlackList& realBlackList) : ICommand(realBlackList) {
 }
-// IsBlackList::IsBlackList(RealBlackList& initialList) : ICommand(initialList) {
-// }
 
 // IsBlacklist class implementing ICommand interface
 // Check if the url is found in the bloomFilter

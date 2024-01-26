@@ -1,14 +1,14 @@
-# First - We will need to build the docker "sudo docker build -t '(1)docker's_fname' '(2)path to docker_file' "
-# Then we will be able to run it- "sudo docker run 'docker's_name"
-# The compailer we need
+# Use the official GCC image as the base image
 FROM gcc:latest
-# The location of the docker's needed system files
-WORKDIR 
-# The files that relevant to docker- copy them to the docker
-COPY 
-# Run what is needed in the docker
-RUN
-# Run the output file
-CMD
 
+# Set the working directory inside the container
+WORKDIR /app
 
+# Copy the source code into the container
+COPY src /app
+
+# Compile the C++ code using g++
+RUN g++ -o main main.cpp
+
+# Specify the command to run the executable when the container starts
+CMD ["./main"]
