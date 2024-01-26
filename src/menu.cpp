@@ -35,6 +35,6 @@ std::pair<int, std::string> Menu::executeCommand(std::stringstream& input) {
 
 // get messageEror to print
 void Menu::displayError(const std::string& message) const {
-    std::cerr << "Error: " << message << std::endl;
+    std::cerr << message << std::endl;
 }
 
