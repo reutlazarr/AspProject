@@ -1,5 +1,8 @@
 // BloomFilterManager.h
 
+#ifndef BLOOMFILTERMANAGER_H
+#define BLOOMFILTERMANAGER_H
+
 #include <map>
 #include <vector>
 #include <set>
@@ -12,8 +15,8 @@
 class BloomFilterManager {
 
 private:
-    Menu* menu;
-    std::map<int, std::unique_ptr<IHashFunction>> hashFunctionMap;
+    Menu& menu;
+    std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap;
     //BloomFilter bloomFilter;
 
     int readArraySize(std::istream& input) const;
@@ -24,6 +27,8 @@ private:
 
 public:
     // constractor
-    BloomFilterManager(Menu* menu, std::map<int, std::unique_ptr<IHashFunction>> hashFunctionMap);
+    BloomFilterManager(Menu& menu, std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap);
     BloomFilter createBloomFilter(); // create bloomFilter 
 };
+
+#endif // BLOOMFILTERMANAGER_H

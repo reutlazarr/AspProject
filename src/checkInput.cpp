@@ -8,10 +8,7 @@
 #include <vector>
 #include <limits>
 
-// setter
-void CheckInput::setHashFunctionsMap(std::map<int, std::unique_ptr<IHashFunction>> newHashFunctionsMap) {
-    hashFunctionsMap = std::move(newHashFunctionsMap);
-}
+
 // get the user input
 // return true if the input not as format: {int, string}, e.g not 1 "exempal.com"
 // return false otherwise
@@ -41,15 +38,15 @@ bool CheckInput::checkArraySize(std::istream& input) {
 // get the user input of hashFunctions
 // return true if the input is not int and not in the hashFunctionMap 
 // return false otherwise
-bool CheckInput::checkHashFunctions(std::istream& input) {
+bool CheckInput::checkHashFunctions(std::istream& input, std::map<int, std::unique_ptr<IHashFunction>>& hashFunctionsMap) {
     int hashFunctionId;
      //bool invalidInput = false;
     while (input >> hashFunctionId) { // read hash function IDs
-         auto it = hashFunctionsMap.find(hashFunctionId);
-          // existing hash function ID found in the map
-         if (it == hashFunctionsMap.end()) { // Hash function ID not found in the map
-            return true;
-         }
+        auto it = hashFunctionsMap.find(hashFunctionId);
+        // existing hash function ID found in the map
+        if (it == hashFunctionsMap.end()) { // Hash function ID not found in the map
+           return true;
+        }
     }
     if (input.fail() && !input.eof()) {
         return true; // when the extraction of hashFunctionId fails (not EOF)
