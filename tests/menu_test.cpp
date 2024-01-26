@@ -15,6 +15,7 @@ TEST(MenuTest, NextCommand) {
     std::stringstream output = menu.nextCommand(); // Assuming nextCommand returns a std::stringstream
     std::string outputContent = output.str();
     EXPECT_EQ(outputContent, "0");
+    EXPECT_NE(outputContent, "1");
 
     std::cin.clear();
     std::cin.rdbuf(originalInput);
