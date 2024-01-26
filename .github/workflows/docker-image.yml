@@ -22,3 +22,4 @@ jobs:
       # --tag my-image-name:$(date +%s): Tags the Docker image with a name (my-image-name) and a timestamp (the result of $(date +%s)
       #  which is the current Unix timestamp). This can be useful to ensure a unique tag for each build.
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
