@@ -4,6 +4,8 @@
 #include <algorithm> 
 
 
+// defaulte constractor
+RealBlackList::RealBlackList(){}
 // constractor
 RealBlackList::RealBlackList(std::vector<std::string> realBlackList) : realBlackList(realBlackList) {}
 

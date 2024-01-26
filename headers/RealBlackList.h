@@ -2,6 +2,7 @@
 #define REAL_BLACK_LIST_H
 #include <string>
 #include <vector>
+#include <memory>
 
 class RealBlackList {
     private:
@@ -10,6 +11,8 @@ class RealBlackList {
     public:
     // constractor
     RealBlackList(std::vector<std::string> realBlackList);
+    // defaulte constractor
+    RealBlackList();
     
     // getters
     std::vector<std::string>& getRealList();

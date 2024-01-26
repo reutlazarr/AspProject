@@ -15,6 +15,9 @@ public:
 
     // clone the object
     virtual std::unique_ptr<IHashFunction> clone() const = 0;
+    
+    // return unique identifier for HashFunction1
+    virtual int getIdentifier() const = 0;
 };
 
 #endif // I_HASH_FUNCTION_H
