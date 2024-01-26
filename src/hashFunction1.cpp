@@ -13,4 +13,8 @@ std::unique_ptr<IHashFunction> HashFunction1::clone() const {
     return std::make_unique<HashFunction1>(*this);
 }
 
+// return unique identifier for HashFunction1
+int HashFunction1::getIdentifier() const {
+        return 1;
+}
 
