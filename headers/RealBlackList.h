@@ -1,3 +1,5 @@
+// RealBlackList.h
+
 #ifndef REAL_BLACK_LIST_H
 #define REAL_BLACK_LIST_H
 #include <string>
@@ -9,11 +11,6 @@ class RealBlackList {
     std::vector<std::string> realBlackList;
 
     public:
-    // constractor
-    RealBlackList(std::vector<std::string> realBlackList);
-    // defaulte constractor
-    RealBlackList();
-    
     // getters
     std::vector<std::string>& getRealList();
 

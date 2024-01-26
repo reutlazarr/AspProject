@@ -9,7 +9,7 @@
 // return the next command fron the user
 std::stringstream Menu::nextCommand() {
     // Get user input
-    std::cout << "Enter command (1 or 2) and URL: " << std::endl;
+    //std::cout << "Enter command (1 or 2) and URL: " << std::endl;
     std::string line;
     std::getline(std::cin, line);
     std::stringstream input(line);
@@ -35,6 +35,6 @@ std::pair<int, std::string> Menu::executeCommand(std::stringstream& input) {
 
 // get messageEror to print
 void Menu::displayError(const std::string& message) const {
-    std::cerr << message << std::endl;
+    //std::cerr << message << std::endl;
 }
 

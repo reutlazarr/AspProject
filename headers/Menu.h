@@ -3,9 +3,10 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include<string>
+#include "CheckInput.h"
 #include <sstream>
-#include <utility>
+#include <iostream>
+#include <limits>
 
 // header for Menu
 class Menu {

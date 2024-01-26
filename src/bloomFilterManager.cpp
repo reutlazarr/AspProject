@@ -14,7 +14,7 @@
 #include <vector>
 
 // constractor
-BloomFilterManager::BloomFilterManager(Menu& menu, std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap) : menu(menu), hashFunctionsMap(std::move(hashFunctionsMap)) {}
+BloomFilterManager::BloomFilterManager(Menu menu, std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap) : menu(menu), hashFunctionsMap(std::move(hashFunctionsMap)) {}
 
 // create bloomFilter
 BloomFilter BloomFilterManager::createBloomFilter() {
@@ -23,7 +23,7 @@ BloomFilter BloomFilterManager::createBloomFilter() {
         try {
             // read the first line of input
             std::string line;
-            std::cout << "Enter array size and hash function IDs: ";
+            //std::cout << "Enter array size and hash function IDs: ";
             std::getline(std::cin, line);
             std::stringstream firstInput(line); // e.g first input = 8 1 2
             std::stringstream inputCopy(firstInput.str()); // copy std::stringstream

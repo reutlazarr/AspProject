@@ -1,15 +1,21 @@
+// isBlackList.cpp
+
 #include "../headers/IsBlacklist.h"
 #include "../headers/AddUrl.h"
 #include <iostream>
 
+<<<<<<< HEAD
+=======
 // Constructor
 IsBlackList::IsBlackList(RealBlackList& realBlackList) : ICommand(realBlackList) {
 }
 
+>>>>>>> 10f5b2965c4f194c0ac227f2037ac5f490868e98
 // IsBlacklist class implementing ICommand interface
 // Check if the url is found in the bloomFilter
 void IsBlackList::execute(BloomFilter& bloomFilter, const std::string& url) {
     // Loop over all the hashFunctions
+    std::string finalResult = "true";
     for (auto& hashFunction : bloomFilter.getHashFunctions()) {
         size_t hashValue = (*hashFunction)(url); // do hash to url and get it's value
         // Divide the value by the size of bitArray and get index number  
@@ -17,27 +23,25 @@ void IsBlackList::execute(BloomFilter& bloomFilter, const std::string& url) {
         // Check the number index in bloomFilter
         if (!(bloomFilter.getBitArray()[index])) {
             // If any corresponding bit is not set, it's definitely not blacklisted
-            std::cout << "false";
-            //execute over
+            finalResult = "false";
+            break;
         }
     }
-    // All corresponding bits are set, might be blacklisted
-    std::string firstResult = "true";
-    std::string compareResultsStr = compareResults(url, bloomFilter);
+    if (finalResult == "true") {
+        // All corresponding bits are set, might be blacklisted
+        std::string compareResultsStr = compareResults(url, bloomFilter.getRealBlackListRef());
 
-    // The final result: "true" + result from compareResults (true/ false)
-    std::string finalResult = firstResult + " "+ compareResultsStr;
-    std::cout << finalResult;
-
+        // The final result: "true" + result from compareResults (true/ false)
+        finalResult = finalResult + " " + compareResultsStr;
+    }
+    std::cout << finalResult << std::endl;
 }
 
 
 // Function to compare results between the realBlackList and the bloomFilter
-std::string IsBlackList::compareResults(const std::string& url, BloomFilter& bloomFilter) {
+std::string IsBlackList::compareResults(const std::string& url, RealBlackList& realBlackListRef) {
     // Check in RealBlackList
     bool isInRealBlackList = realBlackListRef.isUrlInBlackList(url);
     std::string resultString = isInRealBlackList ? "true" : "false";
-
     return resultString;
-
 }

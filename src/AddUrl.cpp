@@ -1,16 +1,19 @@
-#include "../headers/AddUrl.h"
-#include <iostream>
- // Include the <algorithm> header for std::find
-#include <algorithm> 
+// addUrl.cpp
 
-// Constructor
-AddUrl::AddUrl(RealBlackList& realBlackList) : ICommand(realBlackList) {
-}
+#include "../headers/AddUrl.h"
+#include "../headers/RealBlackList.h"
+#include "../headers/BloomFilter.h"
+#include <iostream>
+#include <algorithm> 
 
 // Implementation of execute method
 // Add Url to the BloomFilter
 void AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
+<<<<<<< HEAD
+    addUrlToRealList(url, bloomFilter.getRealBlackListRef());
+=======
     addUrlToRealList(url);
+>>>>>>> 10f5b2965c4f194c0ac227f2037ac5f490868e98
     // Loop over all the hashFunctions
     for (auto& hashFunction : bloomFilter.getHashFunctions()) {
         size_t hashValue = (*hashFunction)(url);
@@ -23,7 +26,7 @@ void AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
 
 
 // Add a new URL to the real black list
-void AddUrl::addUrlToRealList(const std::string& url) {
+void AddUrl::addUrlToRealList(const std::string& url, RealBlackList& realBlackListRef) {
     // Use std::find to check if the URL is already in the blacklist
     auto check = std::find(realBlackListRef.getRealList().begin(), realBlackListRef.getRealList().end(), url);
 

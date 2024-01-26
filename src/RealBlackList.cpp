@@ -1,13 +1,10 @@
+// realBlackList.cpp
+
 #include <string>
 #include <vector>
 #include "../headers/RealBlackList.h"
 #include <algorithm> 
 
-
-// defaulte constractor
-RealBlackList::RealBlackList(){}
-// constractor
-RealBlackList::RealBlackList(std::vector<std::string> realBlackList) : realBlackList(realBlackList) {}
 
 // getters
 std::vector<std::string>& RealBlackList::getRealList() {
