@@ -1,5 +1,8 @@
 // CheckInput.h
 
+#ifndef CHECKINPUT_H
+#define CHECKINPUT_H
+
 #include "IHashFunction.h"
 #include <map>
 #include <vector>
@@ -17,3 +20,4 @@ public:
     bool checkHashFunctions(std::istream& input, std::map<int, std::unique_ptr<IHashFunction>>& hashFunctionsMap); // check the user input of hashFunctions
 };
 
+#endif // CHECKINPUT_H

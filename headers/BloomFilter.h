@@ -9,14 +9,16 @@
 #include "IHashFunction.h"
 #include "HashFunction1.h"
 #include "HashFunction2.h"
+#include "RealBlackList.h"
 
-// header for bloomFilter
 class BloomFilter {
 
 private:
     int sizeArray;
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
     std::vector<bool> bitArray;
+
+    RealBlackList realBlackListRef;
 
 public:
     // constractor
@@ -27,6 +29,7 @@ public:
     int getSizeArray();
     const std::vector<std::unique_ptr<IHashFunction>>& getHashFunctions() const;
     std::vector<bool>& getBitArray();
+    RealBlackList& getRealBlackListRef();
 };
 
 #endif // BLOOM_FILTER_H

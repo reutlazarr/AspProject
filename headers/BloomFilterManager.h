@@ -15,19 +15,22 @@
 class BloomFilterManager {
 
 private:
-    Menu& menu;
+    Menu menu;
     std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap;
-    //BloomFilter bloomFilter;
 
+    // read and validate the array size
     int readArraySize(std::istream& input) const;
+    // read and validate the hash functions
     std::vector<std::unique_ptr<IHashFunction>> readHashFunctions(std::istream& input,
                                                                   std::set<int>& uniqueHashFunctionIds) const;
+    // validate the HashFunctionId and handle it
     void handleHashFunctionId(int hashFunctionId, std::set<int>& uniqueHashFunctionIds,
                               std::vector<std::unique_ptr<IHashFunction>>& hashFunctions) const;
 
 public:
     // constractor
-    BloomFilterManager(Menu& menu, std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap);
+    BloomFilterManager() = default; 
+    BloomFilterManager(Menu menu, std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap);
     BloomFilter createBloomFilter(); // create bloomFilter 
 };
 
