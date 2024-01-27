@@ -4,13 +4,6 @@
 #include "../headers/AddUrl.h"
 #include <iostream>
 
-<<<<<<< HEAD
-=======
-// Constructor
-IsBlackList::IsBlackList(RealBlackList& realBlackList) : ICommand(realBlackList) {
-}
-
->>>>>>> 10f5b2965c4f194c0ac227f2037ac5f490868e98
 // IsBlacklist class implementing ICommand interface
 // Check if the url is found in the bloomFilter
 void IsBlackList::execute(BloomFilter& bloomFilter, const std::string& url) {
