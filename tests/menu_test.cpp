@@ -38,7 +38,7 @@ TEST(MenuTest, ExecuteCommandFailed) {
 
     std::stringstream input2("1");
     auto command2 = menu.executeCommand(input2);
-    EXPECT_EQ(command2.first, -1); // Invalid input as URL is missing
+    EXPECT_EQ(command2.first, -1); // Invalid input,  as URL is missing
 
     std::stringstream input3("");
     auto command3 = menu.executeCommand(input3);
