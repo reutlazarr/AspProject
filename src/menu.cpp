@@ -1,7 +1,7 @@
 // menu.cpp
 
-#include "headers/Menu.h"
-#include "headers/CheckInput.h"
+#include "Menu.h"
+#include "CheckInput.h"
 #include <sstream>
 #include <iostream>
 #include <limits>
