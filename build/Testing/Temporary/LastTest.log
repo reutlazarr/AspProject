@@ -1,0 +1,80 @@
+Start testing: Jan 27 20:25 IST
+----------------------------------------------------------
+1/1 Testing: CalcTests
+1/1 Test: CalcTests
+Command: "/mnt/c/Users/Reut/Documents/Reut/degree/C/Asp/Project/AspProject/build/CalcTests"
+Directory: /mnt/c/Users/Reut/Documents/Reut/degree/C/Asp/Project/AspProject/build
+"CalcTests" start time: Jan 27 20:25 IST
+Output:
+----------------------------------------------------------
+[==========] Running 18 tests from 7 test suites.
+[----------] Global test environment set-up.
+[----------] 5 tests from BloomFilterTest
+[ RUN      ] BloomFilterTest.Getters
+[       OK ] BloomFilterTest.Getters (0 ms)
+[ RUN      ] BloomFilterTest.BitArrayInitialization
+[       OK ] BloomFilterTest.BitArrayInitialization (0 ms)
+[ RUN      ] BloomFilterTest.Case1
+[       OK ] BloomFilterTest.Case1 (0 ms)
+[ RUN      ] BloomFilterTest.Case2
+[       OK ] BloomFilterTest.Case2 (0 ms)
+[ RUN      ] BloomFilterTest.Case1_2
+[       OK ] BloomFilterTest.Case1_2 (0 ms)
+[----------] 5 tests from BloomFilterTest (0 ms total)
+
+[----------] 1 test from BloomFilterBlackList
+[ RUN      ] BloomFilterBlackList.AddUrlUpdatesBlackListCheck
+[       OK ] BloomFilterBlackList.AddUrlUpdatesBlackListCheck (0 ms)
+[----------] 1 test from BloomFilterBlackList (0 ms total)
+
+[----------] 3 tests from HashFunctions
+[ RUN      ] HashFunctions.Hashing
+[       OK ] HashFunctions.Hashing (0 ms)
+[ RUN      ] HashFunctions.getIdentifier
+[       OK ] HashFunctions.getIdentifier (0 ms)
+[ RUN      ] HashFunctions.CloneFunction
+[       OK ] HashFunctions.CloneFunction (0 ms)
+[----------] 3 tests from HashFunctions (0 ms total)
+
+[----------] 4 tests from MenuTest
+[ RUN      ] MenuTest.NextCommand
+[       OK ] MenuTest.NextCommand (0 ms)
+[ RUN      ] MenuTest.ExecuteCommand
+[       OK ] MenuTest.ExecuteCommand (1 ms)
+[ RUN      ] MenuTest.ExecuteCommandFailed
+[       OK ] MenuTest.ExecuteCommandFailed (0 ms)
+[ RUN      ] MenuTest.DisplayError
+[       OK ] MenuTest.DisplayError (0 ms)
+[----------] 4 tests from MenuTest (1 ms total)
+
+[----------] 2 tests from BloomFilterManagerTest
+[ RUN      ] BloomFilterManagerTest.TowHashInBloomFilter
+[       OK ] BloomFilterManagerTest.TowHashInBloomFilter (0 ms)
+[ RUN      ] BloomFilterManagerTest.OneHashInBloomFilter
+[       OK ] BloomFilterManagerTest.OneHashInBloomFilter (0 ms)
+[----------] 2 tests from BloomFilterManagerTest (0 ms total)
+
+[----------] 2 tests from AddUrlTest
+[ RUN      ] AddUrlTest.AddUrlToBlackList
+[       OK ] AddUrlTest.AddUrlToBlackList (0 ms)
+[ RUN      ] AddUrlTest.UpdateBloomFilter
+[       OK ] AddUrlTest.UpdateBloomFilter (0 ms)
+[----------] 2 tests from AddUrlTest (0 ms total)
+
+[----------] 1 test from IsBlackListTest
+[ RUN      ] IsBlackListTest.CheckUrlNotInBlackList
+[       OK ] IsBlackListTest.CheckUrlNotInBlackList (0 ms)
+[----------] 1 test from IsBlackListTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 18 tests from 7 test suites ran. (1 ms total)
+[  PASSED  ] 18 tests.
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"CalcTests" end time: Jan 27 20:25 IST
+"CalcTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jan 27 20:25 IST
