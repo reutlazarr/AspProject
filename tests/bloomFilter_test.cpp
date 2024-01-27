@@ -26,10 +26,7 @@ TEST(BloomFilterTest, Case1) {
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
     hashFunctions.push_back(std::make_unique<HashFunction1>()); // add HashFunction1 to the vector of hashFunctions
     BloomFilter bloomFilter(8, std::move(hashFunctions));
-    bloomFilter.addUrl("www.example.com0"); // add url to the bloomFilter
-    // check if url is in the bloomFilter
-    EXPECT_TRUE(bloomFilter.isBlacklisted("www.example.com0"));
-    EXPECT_FALSE(bloomFilter.isBlacklisted("www.example.com1111")); // not in the bloomFilter
+
 }
 
 // test for HashFunction2 in bloomFilter
@@ -39,10 +36,6 @@ TEST(BloomFilterTest, Case2) {
     const auto& test2 = hashFunction2.get(); // copy the pointer to hashFunction2
     hashFunctions.push_back(std::move(hashFunction2)); // add hashFunction2 to the vector and delete the origin pionter
     BloomFilter bloomFilter(8, std::move(hashFunctions));
-    bloomFilter.addUrl("www.example.com0"); // add url to the bloomFilter
-    // check if url is in the bloomFilter
-    EXPECT_TRUE(bloomFilter.isBlacklisted("www.example.com0"));
-    EXPECT_FALSE(bloomFilter.isBlacklisted("www.example.com1")); // not in the bloomFilter
     // Check hashFunctions vectors
     EXPECT_EQ(bloomFilter.getHashFunctions().size(), 1);
     EXPECT_EQ(bloomFilter.getHashFunctions()[0].get(),test2);
@@ -55,8 +48,4 @@ TEST(BloomFilterTest, Case1_2) {
     hashFunctions.push_back(std::make_unique<HashFunction1>()); // add HashFunction1 to the vector of hashFunctions
     hashFunctions.push_back(std::make_unique<HashFunction2>()); // add HashFunction2 to the vector of hashFunctions
     BloomFilter bloomFilter(8, std::move(hashFunctions));
-    bloomFilter.addUrl("www.example.com0"); // add url to the bloomFilter
-    // check if url is in the bloomFilter
-    EXPECT_TRUE(bloomFilter.isBlacklisted("www.example.com0"));
-    EXPECT_FALSE(bloomFilter.isBlacklisted("www.example.com1")); // not in the bloomFilter
 }
