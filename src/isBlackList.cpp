@@ -24,7 +24,7 @@ void IsBlackList::execute(BloomFilter& bloomFilter, const std::string& url) {
         // All corresponding bits are set, might be blacklisted
         std::string compareResultsStr = compareResults(url, bloomFilter.getRealBlackListRef());
 
-        // The final result: "true" + result from compareResults (true/ false)
+        // The final result: "true" + result from compareResults (true or false)
         finalResult = finalResult + " " + compareResultsStr;
     }
     std::cout << finalResult << std::endl;
