@@ -19,7 +19,7 @@
 # Fortran module files
 *.mod
 *.smod
-build
+.build
 # Compiled Static libraries
 *.lai
 *.la
