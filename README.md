@@ -1,19 +1,22 @@
 # AspProject
 
-Welcome to the wonderful world of BloomFilter!
+Welcome to the exciting journey of developing BloomFilter!
 
-Our work process:
-First we read the exercise and started to divide tasks in JIRA. we divided them into three epics, according to the three steps in the instructions.
-We did step 1 and checked that our work environment was ready for working.
-Then while Reut created our workflow and dockerfile, Bar started to write our code by TDD method.
-1. We started in creating bloomFilter test and then the class itself, with the relevant methods as addUrl and IsBlackList. we created HashFunctoin and checked it all works.
-2. We refactored HashFunction, created another different HashFunction and their interface, all by TDD, first the test and then the code itself.
-3. We wrote the classes that support our app like menu. we refactored bloomFilter and transferred addUrl and IsBlackList to derived from ICommand interface.
-4. We wrote bloomFilterManager that create the bloomFilter according to the user input and we added realBlackList and refactored command. Then we wrote app that execute the users command.
-At the end we refactored our tests and our code in accordance. We checked it all works with the docker by the ymal files that run it.
+Here's how we approached the project:
+Initially, we analyzed the project requirements and organized tasks in JIRA, categorizing them into three epics based on the instruction's key steps.
+Our first move was to ensure a smooth setup of our working environment.
+During the development phase, Reut was in charge of crafting our workflow and Dockerfile, while Bar engaged in coding through the Test-Driven Development (TDD) approach.
+The development process unfolded as follows:
 
-By make pull request into main() the code will run.
-if you want to run our code,
-this is the command line:
- g++ -o bloomFilter -Iheaders src/main.cpp src/app.cpp src/bloomFilterManager.cpp src/menu.cpp src/hashFunction1.cpp src/hashFunction2.cpp src/addUrl.cpp src/isBlackList.cpp src/bloomFilter.cpp src/realBlackList.cpp src/checkInput.cpp -std=c++14
+We commenced by drafting tests for the bloomFilter, followed by constructing the class and its essential methods like addUrl and IsBlackList. We developed a HashFunction and verified the seamless integration of all components.
+Next, we refined the HashFunction, introduced an alternative HashFunction and their interface, adhering to the TDD principle of testing first, then coding.
+Subsequently, we developed supporting classes for our application, such as menu. We refined the bloomFilter class and restructured addUrl and IsBlackList methods to inherit from the ICommand interface.
+We then crafted the bloomFilterManager, which initializes the bloomFilter based on user inputs. We also added realBlackList and improved the command structure. Finally, we developed the app class to execute user commands.
+To conclude, we refined our tests and code, ensuring compatibility and functionality with Docker, as orchestrated by the YAML files.
+To integrate changes into the main branch, simply create a pull request.
+
+If you're keen to run our code, here’s the command line:
+
+g++ -o bloomFilter -Iheaders src/main.cpp src/app.cpp src/bloomFilterManager.cpp src/menu.cpp src/hashFunction1.cpp src/hashFunction2.cpp src/addUrl.cpp src/isBlackList.cpp src/bloomFilter.cpp src/realBlackList.cpp src/checkInput.cpp -std=c++14
+
  
