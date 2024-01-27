@@ -15,16 +15,16 @@ DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 
 enable_testing()
 set(SOURCE_FILES
-    /src/hashFunction1.cpp
-    /src/hashFunction2.cpp
-    /src/bloomFilter.cpp
-    /src/addUrl.cpp
-    /src/isBlackList.cpp
-    /src/menu.cpp
-    /src/bloomFilterManager.cpp
-    /src/realBlackList.cpp
-    /src/app.cpp
-    /src/checkInput.cpp
+    src/hashFunction1.cpp
+    src/hashFunction2.cpp
+    src/bloomFilter.cpp
+    src/addUrl.cpp
+    src/isBlackList.cpp
+    src/menu.cpp
+    src/bloomFilterManager.cpp
+    src/realBlackList.cpp
+    src/app.cpp
+    src/checkInput.cpp
 )
 
 set(TEST_FILES
