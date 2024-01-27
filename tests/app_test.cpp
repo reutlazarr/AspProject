@@ -1,13 +1,13 @@
 //app_test.cpp
 
 #include <gtest/gtest.h>
-#include "../headers/App.h"
-#include "../headers/Menu.h"
-#include "../headers/ICommand.h"
-#include "../headers/IHashFunction.h"
-#include "../headers/HashFunction1.h"
-#include "../headers/RealBlackList.h"
-#include "../headers/AddUrl.h"
+#include "headers/App.h"
+#include "headers/Menu.h"
+#include "headers/ICommand.h"
+#include "headers/IHashFunction.h"
+#include "headers/HashFunction1.h"
+#include "headers/RealBlackList.h"
+#include "headers/AddUrl.h"
 #include <map>
 #include<memory>
 

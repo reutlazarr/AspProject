@@ -1,10 +1,10 @@
 // initialize_test.cpp
 
 #include <gtest/gtest.h>
-#include "../headers/Initialize.h"
-#include "../headers/IHashFunction.h"
-#include "../headers/ICommand.h"
-#include "../headers/Menu.h"
+#include "headers/Initialize.h"
+#include "headers/IHashFunction.h"
+#include "headers/ICommand.h"
+#include "headers/Menu.h"
 
 // tests for initialize
 TEST(Initialize, SeeterInitialized) {

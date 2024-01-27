@@ -1,9 +1,9 @@
 // checkInput_test.cpp
 
 #include <gtest/gtest.h>
-#include "../headers/CheckInput.h"
-#include "../headers/HashFunction1.h"
-#include "../headers/HashFunction2.h"
+#include "headers/CheckInput.h"
+#include "headers/HashFunction1.h"
+#include "headers/HashFunction2.h"
 
 // tests for executeCommand in checkInput
 TEST(CheckInputTest, ExecuteCommand) {

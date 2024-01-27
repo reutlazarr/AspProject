@@ -1,8 +1,8 @@
 // addUrl.cpp
 
-#include "../headers/AddUrl.h"
-#include "../headers/RealBlackList.h"
-#include "../headers/BloomFilter.h"
+#include "headers/AddUrl.h"
+#include "headers/RealBlackList.h"
+#include "headers/BloomFilter.h"
 #include <iostream>
 #include <algorithm> 
 

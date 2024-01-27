@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include "../headers/IsBlackList.h"
-#include "../headers/RealBlackList.h"
-#include "../headers/AddUrl.h"
+#include "headers/IsBlackList.h"
+#include "headers/RealBlackList.h"
+#include "headers/AddUrl.h"
 
 // Define a test case named CheckUrlNotInBlackList in the IsBlackListTest test suite
 TEST(IsBlackListTest, CheckUrlNotInBlackList) {

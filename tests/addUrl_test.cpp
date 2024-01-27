@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "../headers/AddUrl.h"
-#include "../headers/RealBlackList.h"
+#include "headers/AddUrl.h"
+#include "headers/RealBlackList.h"
 
 TEST(AddUrlTest, AddUrlToBlackList) {
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
