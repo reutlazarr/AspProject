@@ -1,10 +1,10 @@
 // bloomFilter.cpp
 
-#include "headers/IHashFunction.h"
-#include "headers/HashFunction1.h"
-#include "headers/HashFunction2.h"
-#include "headers/RealBlackList.h"
-#include "headers/BloomFilter.h"
+#include "IHashFunction.h"
+#include "HashFunction1.h"
+#include "HashFunction2.h"
+#include "RealBlackList.h"
+#include "BloomFilter.h"
 
 
 // constractor
