@@ -1,12 +1,12 @@
 // app.cpp
 
-#include "headers/App.h"
-#include "headers/Menu.h"
-#include "headers/BloomFilterManager.h"
-#include "headers/BloomFilter.h"
-#include "headers/AddUrl.h"
-#include "headers/IsBlackList.h"
-#include "headers/ICommand.h"
+#include "App.h"
+#include "Menu.h"
+#include "BloomFilterManager.h"
+#include "BloomFilter.h"
+#include "AddUrl.h"
+#include "IsBlackList.h"
+#include "ICommand.h"
 #include <stdexcept>
 #include <iostream>
 #include <sstream>

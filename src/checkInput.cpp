@@ -1,7 +1,7 @@
 //checkInput.cpp
 
-#include "headers/CheckInput.h"
-#include "headers/IHashFunction.h"
+#include "CheckInput.h"
+#include "IHashFunction.h"
 
 #include <sstream>
 #include <stdexcept>
