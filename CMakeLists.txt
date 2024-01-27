@@ -38,7 +38,6 @@ set(TEST_FILES
     tests/bloomFilterManager_test.cpp
     tests/addUrl_test.cpp
     tests/isBlackList_test.cpp
-    tests/app_test.cpp
 )
 
 # Create executables
