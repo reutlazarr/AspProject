@@ -15,6 +15,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       
+    - name: Clear CMake Cache and Build Files
+      run: |
+        rm -rf build/
+      
     - name: Run tests from gtest
       # Add commands to run tests from step 2
       run: |
