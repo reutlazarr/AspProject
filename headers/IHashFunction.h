@@ -3,7 +3,7 @@
 #ifndef I_HASH_FUNCTION_H
 #define I_HASH_FUNCTION_H
 
-#include<string>
+#include <string>
 #include <memory>
 
 // header for IHashFunction
