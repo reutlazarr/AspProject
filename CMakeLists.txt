@@ -1,24 +1,25 @@
 cmake_minimum_required(VERSION 3.14)
-project("bloomFilter")
+project("bloomFilter") 
 
-# Set C++ standard
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Include the headers directory
-include_directories(${PROJECT_SOURCE_DIR}/headers) 
-
-# Fetch and make GoogleTest available
 include(FetchContent)
 FetchContent_Declare(
-    googletest
-    URL https://github.com/google/googletest/archive/release-1.11.0.zip
+ googletest
+ URL
+https://github.com/google/googletest/archive/03597a01ee50ed
+33e9dfd640b249b4be3799d395.zip
 )
-FetchContent_MakeAvailable(googletest)
 
-# Define source and test files
+enable_testing()
+
+set(SOURCE_MAIN
+   src/main.cpp 
+)
+
 set(SOURCE_FILES
-    src/hashFunction1.cpp
+   src/hashFunction1.cpp
     src/hashFunction2.cpp
     src/bloomFilter.cpp
     src/addUrl.cpp
@@ -38,18 +39,17 @@ set(TEST_FILES
     tests/bloomFilterManager_test.cpp
     tests/addUrl_test.cpp
     tests/isBlackList_test.cpp
- #   tests/app_test.cpp
 )
 
-# Create test executable
+add_executable(CalcMain ${SOURCE_MAIN} ${SOURCE_FILES})
 add_executable(CalcTests ${TEST_FILES} ${SOURCE_FILES})
 
-# Link GoogleTest and pthread libraries
+
+# Link Google Test to the test executable
 target_link_libraries(CalcTests PRIVATE gtest gtest_main pthread)
 
-# Include directories
-target_include_directories(CalcTests PRIVATE ${PROJECT_SOURCE_DIR}/src)
+# Include the source directory for tests
+target_include_directories(CalcTests PRIVATE src)
 
-# Discover and register tests
 include(GoogleTest)
-gtest_discover_tests(CalcTests)
+add_test(NAME CalcTests COMMAND CalcTests)
