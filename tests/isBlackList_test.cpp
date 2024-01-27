@@ -7,7 +7,7 @@
 TEST(IsBlackListTest, CheckUrlNotInBlackList) {
     // Create a vector to hold unique pointers to IHashFunction objects
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
-    // Initialize a BloomFilter object with array size of 100 and the hash function vector
+    // Initialize a BloomFilter object with size's array of 100 and the hash function vector
     BloomFilter bloomFilter(100, std::move(hashFunctions));
 
     // Define a URL which is supposed to not be in the blacklist
