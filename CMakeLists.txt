@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project("AspProject") # Replace “MyCalc” with your repo name
+project("bloomFilter")
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -10,21 +10,22 @@ googletest
 URL
 https://github.com/google/googletest/archive/03597a01ee50ed
 33e9dfd640b249b4be3799d395.zip
+DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
 enable_testing()
 set(SOURCE_FILES
     #src/calc.cpp # this is where the code we want to test
-    src/hashFunction1.cpp
-    src/hashFunction2.cpp
-    src/bloomFilter.cpp
-    src/addUrl.cpp
-    src/isBlackList.cpp
-    src/menu.cpp
-    src/bloomFilterManager.cpp
-    src/realBlackList.cpp
-    src/app.cpp
-    src/checkInput.cpp
+    /app/src/hashFunction1.cpp
+    /app/src/hashFunction2.cpp
+    /app/src/bloomFilter.cpp
+    /app/src/addUrl.cpp
+    /app/src/isBlackList.cpp
+    /app/src/menu.cpp
+    /app/src/bloomFilterManager.cpp
+    /app/src/realBlackList.cpp
+    /app/src/app.cpp
+    /app/src/checkInput.cpp
 )
 
 set(TEST_FILES

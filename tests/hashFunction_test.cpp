@@ -1,6 +1,6 @@
 // HashFunction_test.cpp
 
-#include<gtest/gtest.h>
+#include <gtest/gtest.h>
 #include "headers/HashFunction1.h"
 #include "headers/HashFunction2.h"
 
