@@ -15,7 +15,6 @@ DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 
 enable_testing()
 set(SOURCE_FILES
-    #src/calc.cpp # this is where the code we want to test
     /src/hashFunction1.cpp
     /src/hashFunction2.cpp
     /src/bloomFilter.cpp
