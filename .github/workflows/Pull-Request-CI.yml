@@ -14,7 +14,7 @@ jobs:
     #every dash is a step, an action
     - name: Checkout code
       uses: actions/checkout@v3
-      
+
     - name: Clear CMake Cache and Build Files
       run: |
         rm -rf build/
@@ -24,7 +24,7 @@ jobs:
       run: |
         cmake -B build -S .
         cmake --build build
-        cd /build
+        cd build
         ctest --test-dir build --output-on-failure
 
    
