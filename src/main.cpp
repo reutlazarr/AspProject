@@ -1,6 +1,6 @@
 // main.cpp
 
-#include "../headers/App.h"
+#include "headers/App.h"
 #include <iostream>
 
 int main(int argc, char** argv) {

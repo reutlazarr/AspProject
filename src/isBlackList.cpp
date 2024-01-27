@@ -1,7 +1,7 @@
 // isBlackList.cpp
 
-#include "../headers/IsBlacklist.h"
-#include "../headers/AddUrl.h"
+#include "headers/IsBlacklist.h"
+#include "headers/AddUrl.h"
 #include <iostream>
 
 // IsBlacklist class implementing ICommand interface

@@ -1,10 +1,10 @@
 // bloomFilterManager.cpp
 
-#include "../headers/BloomFilterManager.h"
-#include "../headers/Menu.h"
-#include "../headers/BloomFilter.h"
-#include "../headers/IHashFunction.h"
-#include "../headers/CheckInput.h"
+#include "headers/BloomFilterManager.h"
+#include "headers/Menu.h"
+#include "headers/BloomFilter.h"
+#include "headers/IHashFunction.h"
+#include "headers/CheckInput.h"
 
 #include <iostream>
 #include <limits>

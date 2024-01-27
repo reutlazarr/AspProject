@@ -1,6 +1,6 @@
 // HashFunction2.cpp
 
-#include "../headers/HashFunction2.h"
+#include "headers/HashFunction2.h"
 
 // hash of HashFunction2
 size_t HashFunction2::operator()(const std::string& str) const {
