@@ -1,0 +1,4 @@
+/mnt/c/Users/Reut/Documents/Reut/degree/C/Asp/Project/AspProject/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Reut/Documents/Reut/degree/C/Asp/Project/AspProject/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Reut/Documents/Reut/degree/C/Asp/Project/AspProject/build/CMakeFiles/test.dir
+/mnt/c/Users/Reut/Documents/Reut/degree/C/Asp/Project/AspProject/build/CMakeFiles/CalcTests.dir
