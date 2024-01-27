@@ -20,20 +20,23 @@ set(SOURCE_FILES
     src/bloomFilter.cpp
     src/addUrl.cpp
     src/isBlackList.cpp
-    #src/menu.cpp
-    #src/bloomFilterManager.cpp
-    src/realBlackList
+    src/menu.cpp
+    src/bloomFilterManager.cpp
+    src/realBlackList.cpp
+    src/app.cpp
+    src/checkInput.cpp
 )
 
 set(TEST_FILES
     tests/test_main.cpp # this is the main for tests
     #tests/calc_test.cpp # this file contain the tests
     tests/bloomFilter_test.cpp # this file contain the tests
-    #tests/hashFunction_test.cpp # this file contain the tests
-    #tests/menu_test.cpp
-    #tests/bloomFilterManager_test.cpp
+    tests/hashFunction_test.cpp # this file contain the tests
+    tests/menu_test.cpp
+    tests/bloomFilterManager_test.cpp
     tests/addUrl_test.cpp
     tests/isBlackList_test.cpp
+    tests/app_test.cpp
 
 )
 

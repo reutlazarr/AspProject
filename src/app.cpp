@@ -26,18 +26,24 @@ void App::setCommands() {
     commands[2] = std::make_unique<IsBlackList>();
 }
 
-// run the app
 void App::run() {
     BloomFilter bloomFilter = bloomFilterManager.createBloomFilter();
     while (true) {
-        // loop of command from the user and execute
-        try {
-            std::stringstream input = menu.nextCommand();
-            auto task = menu.executeCommand(input); // should get pair of command and url
-            // Check if the task is legal- 1 or 2
+        std::stringstream input = menu.nextCommand();
+        auto task = menu.executeCommand(input); // should get pair of command and url
+
+        // Check for invalid command
+        if (task.first == -1) {
+            // Silently handle invalid input and continue the loop
+            continue;
+        }
+
+        // Execute valid command
+        if (commands.find(task.first) != commands.end()) {
             commands[task.first]->execute(bloomFilter, task.second);
-        } catch(const std::exception& ex) {
-            menu.displayError("Error: " + std::string(ex.what()));
+        } else {
+            // Handle the case where the command is not found in the map
+            // This can be silent or you can log it as needed
         }
     }    
 }
