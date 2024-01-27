@@ -19,6 +19,16 @@ TEST(BloomFilterTest, Getters) {
     // Check hashFunctions vectors
     EXPECT_EQ(bloomFilter.getHashFunctions().size(), 1);
     EXPECT_EQ(bloomFilter.getHashFunctions()[0].get(),test1);
+    
+}
+
+TEST(BloomFilterTest, BitArrayInitialization) {
+    std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
+    BloomFilter bloomFilter(10, std::move(hashFunctions));
+    auto bitArray = bloomFilter.getBitArray();
+    for (bool bit : bitArray) {
+        EXPECT_FALSE(bit);
+    }
 }
 
 // test for HashFunction1 in bloomFilter
