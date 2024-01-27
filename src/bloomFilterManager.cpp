@@ -29,13 +29,15 @@ BloomFilter BloomFilterManager::createBloomFilter() {
             std::stringstream inputCopy(firstInput.str()); // copy std::stringstream
 
             if (checkInput.checkArraySize(inputCopy)) {
-                throw std::invalid_argument("Invalid array size.");
+                continue;
+                //throw std::invalid_argument("Invalid array size.");
             }
             int arraySize = readArraySize(firstInput);
 
             std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
             if (checkInput.checkHashFunctions(inputCopy, hashFunctionsMap)) {
-                throw std::invalid_argument("Invalid hash functions.");
+                continue;
+                //throw std::invalid_argument("Invalid hash functions.");
             }
             std::set<int> uniqueHashFunctionIds; // create a set to keep track of unique hash function IDs
             hashFunctions = readHashFunctions(firstInput, uniqueHashFunctionIds);

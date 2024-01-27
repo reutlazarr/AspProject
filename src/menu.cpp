@@ -16,25 +16,25 @@ std::stringstream Menu::nextCommand() {
     return input;
 }
 
-// get std::stringstream
-// return int for the commannd, and string for the url
 std::pair<int, std::string> Menu::executeCommand(std::stringstream& input) {
     CheckInput checkInput;
     std::stringstream inputCopy(input.str()); // copy std::stringstream
-    // invalid input throw std::invalid_argument
-    if (checkInput.checkExecuteCommand(inputCopy)) {
-        input.clear();
-        input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        throw std::invalid_argument("Invalid input.");   
-    }
     int command;
     std::string url;
-    input >> command >> url;
+
+    // Check for invalid input
+    if (checkInput.checkExecuteCommand(inputCopy)) {
+        command = -1; // Indicator for invalid command
+        url = ""; // Empty URL for invalid input
+    } else {
+        input >> command >> url;
+    }
+
     return std::make_pair(command, url); // return pair of command int and url string
 }
 
 // get messageEror to print
 void Menu::displayError(const std::string& message) const {
-    //std::cerr << message << std::endl;
+    std::cerr << message << std::endl;
 }
 

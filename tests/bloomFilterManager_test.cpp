@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include "../headers/BloomFilterManager.h"
+#include "../headers/CheckInput.h"
 #include "../headers/BloomFilter.h"
 #include "../headers/IHashFunction.h"
 #include "../headers/HashFunction1.h"
