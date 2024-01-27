@@ -1,25 +1,24 @@
 cmake_minimum_required(VERSION 3.14)
-project("bloomFilter") 
+project(bloomFilter) 
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Fetch GoogleTest
 include(FetchContent)
 FetchContent_Declare(
- googletest
- URL
-https://github.com/google/googletest/archive/03597a01ee50ed
-33e9dfd640b249b4be3799d395.zip
+    googletest
+    URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
 )
+FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-set(SOURCE_MAIN
-   src/main.cpp 
-)
+# Add your source and header directories here
+include_directories(headers)
 
 set(SOURCE_FILES
-   src/hashFunction1.cpp
+    src/hashFunction1.cpp
     src/hashFunction2.cpp
     src/bloomFilter.cpp
     src/addUrl.cpp
@@ -41,9 +40,9 @@ set(TEST_FILES
     tests/isBlackList_test.cpp
 )
 
-add_executable(CalcMain ${SOURCE_MAIN} ${SOURCE_FILES})
+# Create executables
+add_executable(CalcMain src/main.cpp ${SOURCE_FILES})
 add_executable(CalcTests ${TEST_FILES} ${SOURCE_FILES})
-
 
 # Link Google Test to the test executable
 target_link_libraries(CalcTests PRIVATE gtest gtest_main pthread)
