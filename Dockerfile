@@ -8,7 +8,7 @@ WORKDIR /app
 COPY src /app
 
 # Compile the C++ code using g++
-RUN g++ -o main main.cpp
+RUN g++ -o bloomFilter -Iheaders src/main.cpp src/app.cpp src/bloomFilterManager.cpp src/menu.cpp src/hashFunction1.cpp src/hashFunction2.cpp src/addUrl.cpp src/isBlackList.cpp src/bloomFilter.cpp src/realBlackList.cpp src/checkInput.cpp -std=c++14
 
 # Specify the command to run the executable when the container starts
-CMD ["./main"]
+CMD ["./bloomFilter"]
