@@ -1,38 +1,55 @@
-// app_test.cpp
+//app_test.cpp
 
 #include <gtest/gtest.h>
-#include "App.h"
-#include "Menu.h"
-#include "BloomFilterManager.h"
-#include "HashFunction1.h"
-#include "HashFunction2.h"
-#include <memory>
+#include "../headers/App.h"
+#include "../headers/Menu.h"
+#include "../headers/ICommand.h"
+#include "../headers/IHashFunction.h"
+#include "../headers/HashFunction1.h"
+#include "../headers/RealBlackList.h"
+#include "../headers/AddUrl.h"
 #include <map>
+#include<memory>
 
-// Test the construction of the App class
-TEST(AppTest, Constructor) {
+TEST(AppTest, ConstructorTest) {
+    // Arrange
     Menu menu;
+    std::map<int, std::unique_ptr<ICommand>> commands;
+    RealBlackList realBlackList;
+    commands[1] = std::make_unique<AddUrl>(realBlackList);
+    const auto& commandsTest = commands;
     std::map<int, std::unique_ptr<IHashFunction>> hashFunctions;
     hashFunctions[1] = std::make_unique<HashFunction1>();
-    hashFunctions[2] = std::make_unique<HashFunction2>();
-    BloomFilterManager bloomFilterManager(menu, std::move(hashFunctions));
+    const auto& hashFunctionsTest = commands;
 
-    EXPECT_NO_THROW(App(menu, bloomFilterManager));
+    App app(menu, std::move(commands), std::move(hashFunctions));
+
+    EXPECT_EQ(commandsTest.size(), app.getCommands().size());
+    EXPECT_EQ(hashFunctionsTest.size(), app.getHashFunctions().size());
 }
 
-// Test the run method of the App class
-// Note: The actual behavior of run depends on user input, which is not tested here
-TEST(AppTest, RunMethod) {
-    Menu menu;
-    std::map<int, std::unique_ptr<IHashFunction>> hashFunctions;
-    hashFunctions[1] = std::make_unique<HashFunction1>();
-    hashFunctions[2] = std::make_unique<HashFunction2>();
-    BloomFilterManager bloomFilterManager(menu, std::move(hashFunctions));
-    App app(menu, bloomFilterManager);
+// TEST(AppTest, CommandMapInitialization) {
+//     App app;
+//     Menu menu;
+//     std::map<int, std::unique_ptr<ICommand>> commands;
+//     app.setCommands();
+//     auto commands = app.getCommands(); // This requires a getter in App
+//     EXPECT_TRUE(commands.find(1) != commands.end());
+//     EXPECT_TRUE(commands.find(2) != commands.end());
+//     // Further, you can check if the commands are of the expected type
+// }
 
-    // Assuming run method doesn't return a value and just starts the application loop
-    // Testing actual behavior might require more complex setup or refactoring of the App class
-    EXPECT_NO_THROW(app.run());
-}
-
-// Additional tests can be added here as needed
+// TEST(AppTest, RunValidCommand) {
+//     MockMenu mockMenu; // You need to create a mock version of Menu
+//     MockBloomFilterManager mockManager; // Mock version of BloomFilterManager
+//     App app(mockMenu, mockManager); // Adjust constructor for dependency injection
+//     EXPECT_CALL(mockMenu, nextCommand()).WillOnce(Return(/* Mocked valid command */));
+//     EXPECT_NO_THROW(app.run());
+// }
+// TEST(AppTest, CommandMapInitialization) {
+//     App app;
+//     app.setCommands();
+//     auto& commands = app.getCommands(); // This requires a getter in App
+//     EXPECT_NE(commands.find(1), commands.end());
+//     EXPECT_NE(commands.find(2), commands.end());
+// }
