@@ -11,12 +11,15 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-      
-    - name: Set up CMake
-      uses: lukka/get-cmake@latest
+
+    - name: Clear CMake Cache
+      run: |
+        rm -rf build/CMakeCache.txt
+        rm -rf build/CMakeFiles
 
     - name: Run tests from gtest
       run: |
-          cmake -B build -S .
-          cmake --build build
-          cd build && ctest --output-on-failure
+        cmake -B build -S .
+        cmake --build build
+        cd build && ctest --output-on-failure
+
