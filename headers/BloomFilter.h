@@ -6,7 +6,7 @@
 #include<string>
 #include<vector>
 #include <memory>
-#include "IhashFunction.h"
+#include "IHashFunction.h"
 #include "HashFunction1.h"
 #include "HashFunction2.h"
 #include "RealBlackList.h"
