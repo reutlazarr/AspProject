@@ -1,12 +1,12 @@
 // bloomFilterManager_test.cpp
 
 #include <gtest/gtest.h>
-#include "headers/BloomFilterManager.h"
-#include "headers/CheckInput.h"
-#include "headers/BloomFilter.h"
-#include "headers/IHashFunction.h"
-#include "headers/HashFunction1.h"
-#include "headers/HashFunction2.h"
+#include "BloomFilterManager.h"
+#include "CheckInput.h"
+#include "BloomFilter.h"
+#include "IHashFunction.h"
+#include "HashFunction1.h"
+#include "HashFunction2.h"
 #include<iostream>
 
 // Test for the createBloomFilter with tow hashFunctions

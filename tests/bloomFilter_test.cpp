@@ -2,11 +2,11 @@
 
 #include <gtest/gtest.h>
 #include <memory>
-#include "headers/HashFunction1.h"
-#include "headers/HashFunction2.h"
-#include "headers/BloomFilter.h"
-#include "headers/RealBlackList.h"
-#include "headers/AddUrl.h"
+#include "HashFunction1.h"
+#include "HashFunction2.h"
+#include "BloomFilter.h"
+#include "RealBlackList.h"
+#include "AddUrl.h"
 
 // Tests for bloomFilter getters
 TEST(BloomFilterTest, Getters) {

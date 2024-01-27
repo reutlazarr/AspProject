@@ -1,8 +1,8 @@
 // HashFunction_test.cpp
 
 #include <gtest/gtest.h>
-#include "headers/HashFunction1.h"
-#include "headers/HashFunction2.h"
+#include "HashFunction1.h"
+#include "HashFunction2.h"
 
 
 // Test Hashing
