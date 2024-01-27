@@ -2,8 +2,8 @@
 
 #include <gtest/gtest.h>
 #include <sstream>
-#include "/headers/Menu.h"
-#include "/headers/CheckInput.h"
+#include "Menu.h"
+#include "CheckInput.h"
 
 Menu menu;
 

@@ -1,11 +1,11 @@
 // checkInput_test.cpp
 
 #include <gtest/gtest.h>
-#include "headers/CheckInput.h"
-#include "headers/HashFunction1.h"
-#include "headers/HashFunction2.h"
+#include "CheckInput.h"
+#include "HashFunction1.h"
+#include "HashFunction2.h"
 
-// tests for executeCommand in checkInput
+// tests for executeCommand in checkInput   
 TEST(CheckInputTest, ExecuteCommand) {
     CheckInput checkInput;
     std::stringstream input("1 example.com");
