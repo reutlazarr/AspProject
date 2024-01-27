@@ -30,7 +30,6 @@ BloomFilter BloomFilterManager::createBloomFilter() {
 
             if (checkInput.checkArraySize(inputCopy)) {
                 continue;
-                //throw std::invalid_argument("Invalid array size.");
             }
             int arraySize = readArraySize(firstInput);
 
