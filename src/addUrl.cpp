@@ -6,7 +6,7 @@
 #include <iostream>
 #include <algorithm> 
 
-// Implementation of execute method
+// Implementation of execute method of ICommand
 // Add Url to the BloomFilter and to the black list
 void AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
     addUrlToRealList(url, bloomFilter.getRealBlackListRef());
