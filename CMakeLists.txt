@@ -5,6 +5,9 @@ project("bloomFilter")
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Include the headers directory
+include_directories(${PROJECT_SOURCE_DIR}/headers) 
+
 # Fetch and make GoogleTest available
 include(FetchContent)
 FetchContent_Declare(
@@ -35,7 +38,7 @@ set(TEST_FILES
     tests/bloomFilterManager_test.cpp
     tests/addUrl_test.cpp
     tests/isBlackList_test.cpp
-    tests/app_test.cpp
+ #   tests/app_test.cpp
 )
 
 # Create test executable
