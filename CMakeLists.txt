@@ -16,16 +16,16 @@ DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 enable_testing()
 set(SOURCE_FILES
     #src/calc.cpp # this is where the code we want to test
-    /app/src/hashFunction1.cpp
-    /app/src/hashFunction2.cpp
-    /app/src/bloomFilter.cpp
-    /app/src/addUrl.cpp
-    /app/src/isBlackList.cpp
-    /app/src/menu.cpp
-    /app/src/bloomFilterManager.cpp
-    /app/src/realBlackList.cpp
-    /app/src/app.cpp
-    /app/src/checkInput.cpp
+    /src/hashFunction1.cpp
+    /src/hashFunction2.cpp
+    /src/bloomFilter.cpp
+    /src/addUrl.cpp
+    /src/isBlackList.cpp
+    /src/menu.cpp
+    /src/bloomFilterManager.cpp
+    /src/realBlackList.cpp
+    /src/app.cpp
+    /src/checkInput.cpp
 )
 
 set(TEST_FILES
