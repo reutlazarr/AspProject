@@ -7,7 +7,7 @@
 #include <algorithm> 
 
 // Implementation of execute method
-// Add Url to the BloomFilter
+// Add Url to the BloomFilter and to the black list
 void AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
     addUrlToRealList(url, bloomFilter.getRealBlackListRef());
     // Loop over all the hashFunctions
