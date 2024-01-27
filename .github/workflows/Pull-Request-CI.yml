@@ -19,7 +19,7 @@ jobs:
 
     - name: Run tests from gtest
       run: |
-        cmake -B build -S .
         cmake --build build
-        cd build && ctest --output-on-failure
+        cd build
+        ctest --output-on-failure
 
