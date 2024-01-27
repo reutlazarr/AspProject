@@ -13,4 +13,4 @@ public:
     virtual void execute(BloomFilter& bloomFilter, const std::string& url) = 0;
 };
 
-#endif 
+#endif //ICommands.h
