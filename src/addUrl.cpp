@@ -21,7 +21,7 @@ void AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
 }
 
 
-// Add a new URL to the real black list
+// Add a new URL to the real black list - in order to show false positive
 void AddUrl::addUrlToRealList(const std::string& url, RealBlackList& realBlackListRef) {
     // Use std::find to check if the URL is already in the blacklist
     auto check = std::find(realBlackListRef.getRealList().begin(), realBlackListRef.getRealList().end(), url);
