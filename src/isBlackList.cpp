@@ -27,7 +27,7 @@ std::string IsBlackList::execute(BloomFilter& bloomFilter, const std::string& ur
         // The final result: "true" + result from compareResults (true or false)
         finalResult = finalResult + " " + compareResultsStr;
     }
-    std::cout << finalResult << std::endl;
+    //std::cout << finalResult << std::endl;
     return finalResult;
 }
 

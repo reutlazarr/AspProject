@@ -40,7 +40,8 @@ void App::run() {
 
         // Execute valid command
         if (commands.find(task.first) != commands.end()) {
-            commands[task.first]->execute(bloomFilter, task.second);
+            std::string isMalicious = commands[task.first]->execute(bloomFilter, task.second);
+            std::cout << isMalicious << std::endl;
         } else {
             // Handle the case where the command is not found in the map
             // This can be silent or you can log it as needed

@@ -17,7 +17,7 @@ std::string AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
         // Add url to bloomFilter by making the index number to true
         bloomFilter.getBitArray()[index] = true;
     }
-    return "";
+    return "added";
 
 }
 
