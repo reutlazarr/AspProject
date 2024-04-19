@@ -15,7 +15,8 @@ class App {
     
 private:
     Menu menu;
-    BloomFilterManager bloomFilterManager; 
+    BloomFilterManager bloomFilterManager;
+    BloomFilter bloomFilter;
     std::map<int, std::unique_ptr<ICommand>> commands;
     void setCommands(); // set map of commands
     

@@ -18,6 +18,7 @@ App::App() : menu(Menu()) {
     hashFunctions[2] = std::make_unique<HashFunction2>();
     bloomFilterManager = BloomFilterManager(menu, std::move(hashFunctions));
     setCommands();
+    bloomFilter = bloomFilterManager.createBloomFilter();
 }
 
 // set map of commands
@@ -27,7 +28,7 @@ void App::setCommands() {
 }
 
 void App::run() {
-    BloomFilter bloomFilter = bloomFilterManager.createBloomFilter();
+    //BloomFilter bloomFilter = bloomFilterManager.createBloomFilter();
     while (true) {
         std::stringstream input = menu.nextCommand();
         auto task = menu.executeCommand(input); // should get pair of command and url

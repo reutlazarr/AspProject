@@ -22,6 +22,7 @@ private:
 
 public:
     // constractor
+    BloomFilter() = default;
     // get std::vector<std::unique_ptr<IHashFunction>>, and the size of the array
     BloomFilter(int sizeArray, std::vector<std::unique_ptr<IHashFunction>> hashFunctions);
 
