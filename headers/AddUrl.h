@@ -11,7 +11,7 @@
 class AddUrl : public ICommand {
 public:
     // Implementing the execute() method from ICommand interface
-    void execute(BloomFilter& bloomFilter, const std::string& url) override;
+    std::string execute(BloomFilter& bloomFilter, const std::string& url) override;
     // Add a new URL to the blacklist
     void addUrlToRealList(const std::string& url, RealBlackList& realBlackListRef);
 };

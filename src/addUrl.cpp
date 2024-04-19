@@ -8,7 +8,7 @@
 
 // Implementation of execute method of ICommand
 // Add Url to the BloomFilter and to the black list
-void AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
+std::string AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
     addUrlToRealList(url, bloomFilter.getRealBlackListRef());
     // Loop over all the hashFunctions
     for (auto& hashFunction : bloomFilter.getHashFunctions()) {
@@ -17,6 +17,7 @@ void AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
         // Add url to bloomFilter by making the index number to true
         bloomFilter.getBitArray()[index] = true;
     }
+    return "";
 
 }
 

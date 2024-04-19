@@ -10,7 +10,7 @@
 class ICommand {
 public:
     // Pure virtual function, making it an abstract class
-    virtual void execute(BloomFilter& bloomFilter, const std::string& url) = 0;
+    virtual std::string execute(BloomFilter& bloomFilter, const std::string& url) = 0;
 };
 
 #endif //ICommands.h

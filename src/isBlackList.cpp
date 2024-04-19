@@ -6,7 +6,7 @@
 
 // IsBlacklist class implementing ICommand interface
 // Check if the url is found in the bloomFilter
-void IsBlackList::execute(BloomFilter& bloomFilter, const std::string& url) {
+std::string IsBlackList::execute(BloomFilter& bloomFilter, const std::string& url) {
     // Loop over all the hashFunctions
     std::string finalResult = "true";
     for (auto& hashFunction : bloomFilter.getHashFunctions()) {
@@ -28,6 +28,7 @@ void IsBlackList::execute(BloomFilter& bloomFilter, const std::string& url) {
         finalResult = finalResult + " " + compareResultsStr;
     }
     std::cout << finalResult << std::endl;
+    return finalResult;
 }
 
 
