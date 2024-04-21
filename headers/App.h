@@ -31,7 +31,9 @@ private:
 
     void handleClient(int clientSock);
     void startServer(int port);
-    void initalizeBloomFilter(int sock);
+    int setupServerSocket(int server_port);
+    bool initializeBloomFilter(int client_sock);
+    void handleClientConnections(int sock, struct sockaddr_in& sin, socklen_t addr_len);
     
     
 public:

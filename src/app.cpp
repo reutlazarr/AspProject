@@ -19,8 +19,6 @@ App::App() : menu(Menu()) {
     hashFunctions[2] = std::make_unique<HashFunction2>();
     bloomFilterManager = BloomFilterManager(menu, std::move(hashFunctions));
     setCommands();
-    //bloomFilter = bloomFilterManager.createBloomFilter();
-    //bloomFilter = std::make_shared<BloomFilter>(bloomFilterManager.createBloomFilter());
 }
 
 // set map of commands
@@ -35,10 +33,35 @@ void App::run() {
 }
 
 void App::startServer(int server_port) {
+    int sock = setupServerSocket(server_port);
+    if (sock < 0) return;
+
+    struct sockaddr_in sin;
+    socklen_t addr_len = sizeof(sin);
+    memset(&sin, 0, sizeof(sin));
+    bool isInitialized = false;
+    // Main server loop
+    while (!isInitialized) {
+        int client_sock = accept(sock, (struct sockaddr *)&sin, &addr_len);
+        if (client_sock < 0) {
+            perror("error accepting client");
+            continue;
+        }
+        std::cout << "Connection accepted from client: " << client_sock << std::endl;
+        isInitialized = initializeBloomFilter(client_sock);
+        close(client_sock);  // Close initial connection, needed????
+    }
+
+    // Now proceed to handle other clients
+    handleClientConnections(sock, sin, addr_len);
+    close(sock); // Close the server socket when done
+}
+
+int App::setupServerSocket(int server_port) {
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
         perror("error creating socket");
-        return;
+        return -1;
     }
 
     struct sockaddr_in sin;
@@ -50,59 +73,46 @@ void App::startServer(int server_port) {
     if (bind(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
         perror("error binding socket");
         close(sock);
-        return;
+        return -1;
     }
     if (listen(sock, 5) < 0) {
         perror("error listening to a socket");
         close(sock);
-        return;
+        return -1;
     }
     std::cout << "Server is running on port " << server_port << std::endl;
+    return sock;
+}
 
-    socklen_t addr_len = sizeof(sin);
-    bool isInitialized = false;
-    // Main server loop
-    while (!isInitialized) {
-        // struct sockaddr_in client_sin;
-        // socklen_t addr_len = sizeof(client_sin);
-        int client_sock = accept(sock, (struct sockaddr *)&sin, &addr_len);
-        if (client_sock < 0) {
-            perror("error accepting client");
-            continue;
-        }
-        std::cout << "Connection accepted from client: " << client_sock << std::endl;
-        std::stringstream input = menu.nextCommand(client_sock);
-        std::cout << "input: " << input.str() << std::endl;
-        if (input.str().empty()) {
-            std::cout << client_sock << std::endl;
-            std::cerr << "Error reading from socket or connection closed\n";
-        }
-        try {
-            bloomFilter = std::make_shared<BloomFilter>(bloomFilterManager.createBloomFilter(input));
-            std::string successMsg = "Bloom Filter initialized successfully\n";
-            send(client_sock, successMsg.c_str(), successMsg.length(), 0);
-            isInitialized = true;  // Set flag to exit the initialization loop
-        } catch (const std::exception& e) {
-            std::string errorMsg = "Initialization failed: " + std::string(e.what()) + "\n";
-            send(client_sock, errorMsg.c_str(), errorMsg.length(), 0);
-        }
-        close(client_sock);  // Close initial connection
+bool App::initializeBloomFilter(int client_sock) {
+    std::stringstream input = menu.nextCommand(client_sock);
+    std::cout << "input: " << input.str() << std::endl;
+    if (input.str().empty()) {
+        std::cerr << "Error reading from socket or connection closed\n";
+        return false;
     }
+    try {
+        bloomFilter = std::make_shared<BloomFilter>(bloomFilterManager.createBloomFilter(input));
+        std::string successMsg = "Bloom Filter initialized successfully\n";
+        send(client_sock, successMsg.c_str(), successMsg.length(), 0);
+        return true;
+    } catch (const std::exception& e) {
+        std::string errorMsg = "Initialization failed: " + std::string(e.what()) + "\n";
+        send(client_sock, errorMsg.c_str(), errorMsg.length(), 0);
+        return false;
+    }
+}
 
-    // Now proceed to handle other clients
+void App::handleClientConnections(int sock, struct sockaddr_in& sin, socklen_t addr_len) {
     while (true) {
-        // struct sockaddr_in client_sin;
-        // socklen_t addr_len = sizeof(client_sin);
         int client_sock = accept(sock, (struct sockaddr *)&sin, &addr_len);
         if (client_sock < 0) {
             perror("error accepting client");
             continue;
         }
         std::thread clientThread(&App::handleClient, this, client_sock);
-        clientThread.detach(); // Detach the thread to handle the client independently
+        clientThread.detach();
     }
-    // Close the server socket when done
-    close(sock);  
 }
 
 void App::handleClient(int clientSock) {
@@ -114,8 +124,8 @@ void App::handleClient(int clientSock) {
             //result = "{\"error\":\"Invalid command or empty input\"}";
             break;  // Exit loop if the connection is closed or error occurs
         }
+        
         auto task = menu.executeCommand(input); // should get pair of command and url
-
         // Check for invalid command
         if (task.first == -1) {
             // Silently handle invalid input and continue the loop
