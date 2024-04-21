@@ -29,3 +29,24 @@ std::vector<bool>& BloomFilter::getBitArray() {
 RealBlackList& BloomFilter::getRealBlackListRef() {
     return realBlackListRef;
 }
+
+void BloomFilter::add(const std::string& url) {
+    // Loop over all the hashFunctions
+    for (auto& hashFunction : hashFunctions) {
+        size_t hashValue = (*hashFunction)(url);
+        // Add url to bloomFilter by making the index number to true
+        bitArray[hashValue % bitArray.size()] = true;
+    }
+}
+
+bool BloomFilter::contains(const std::string& url) {
+    // Loop over all the hashFunctions
+    for (auto& hashFunction : hashFunctions) {
+            size_t hashValue = (*hashFunction)(url); // do hash to url and get it's value
+            // Check if the number index in bloomFilter is not set
+            if (!bitArray[hashValue % bitArray.size()]) {
+                return false; // not blacklisted
+            }
+    }
+    return true;
+}

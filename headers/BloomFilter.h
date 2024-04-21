@@ -17,7 +17,6 @@ private:
     int sizeArray;
     std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
     std::vector<bool> bitArray;
-
     RealBlackList realBlackListRef;
 
 public:
@@ -31,6 +30,9 @@ public:
     const std::vector<std::unique_ptr<IHashFunction>>& getHashFunctions() const;
     std::vector<bool>& getBitArray();
     RealBlackList& getRealBlackListRef();
+
+    void add(const std::string& url);
+    bool contains(const std::string& url);
 };
 
 #endif // BLOOM_FILTER_H
