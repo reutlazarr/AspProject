@@ -15,8 +15,6 @@ std::stringstream Menu::nextCommand(int clientSock) {
         return std::stringstream();  // Return an empty stringstream on error
     }
     return std::stringstream(std::string(buffer, bytes_read));
-
-
     // // Get user input
     // //std::cout << "Enter command (1 or 2) and URL: " << std::endl;
     // std::string line;

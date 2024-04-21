@@ -30,6 +30,7 @@ private:
     std::mutex mtx; // For thread-safe access to the BloomFilter
 
     void handleClient(int clientSock);
+    void startServer(int port);
     
     
 public:

@@ -31,10 +31,14 @@ void App::setCommands() {
 
 void App::run() {
     const int server_port = 5555;
+    startServer(server_port); // Example port number 
+}
+
+void App::startServer(int server_port) {
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0) {
         perror("error creating socket");
-        return;  // Corrected: no value returned
+        return;
     }
 
     struct sockaddr_in sin;
@@ -48,13 +52,11 @@ void App::run() {
         //close(sock);
         return;
     }
-
     if (listen(sock, 5) < 0) {
         perror("error listening to a socket");
         //close(sock);
         return;
     }
-
     std::cout << "Server is running on port " << server_port << std::endl;
 
     while (true) {
@@ -65,12 +67,11 @@ void App::run() {
             perror("error accepting client");
             continue;
         }
-
         std::thread clientThread(&App::handleClient, this, client_sock);
         clientThread.detach(); // Detach the thread to handle the client independently
     }
     // Close the server socket when done
-    //close(sock);   
+    close(sock);  
 }
 
 void App::handleClient(int clientSock) {
@@ -85,8 +86,15 @@ void App::handleClient(int clientSock) {
 
         // std::string input(buffer);
         // std::stringstream received(input);
+        // auto task = menu.executeCommand(received); // should get pair of command and url
 
         std::stringstream input = menu.nextCommand(clientSock);
+        if (input.str().empty()) {
+            std::cout << clientSock << std::endl;
+            std::cerr << "Error reading from socket or connection closed\n";
+            //result = "{\"error\":\"Invalid command or empty input\"}";
+            break;  // Exit loop if the connection is closed or error occurs
+        }
         auto task = menu.executeCommand(input); // should get pair of command and url
 
         // Check for invalid command
@@ -100,8 +108,8 @@ void App::handleClient(int clientSock) {
         } else if (task.first != -1 && commands.find(task.first) != commands.end()) {
             std::lock_guard<std::mutex> lock(mtx);
             std::string isMalicious = commands[task.first]->execute(*bloomFilter, task.second);
-            std::cout << isMalicious << std::endl;
             std::cout << clientSock << std::endl;
+            std::cout << isMalicious << std::endl;
             send(clientSock, isMalicious.c_str(), isMalicious.length(), 0);
         }
     }
