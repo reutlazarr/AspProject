@@ -6,7 +6,6 @@
 
 #include <map>
 #include <memory>
-#include <pthread.h>
 #include <thread>
 #include <mutex>
 #include <vector>
@@ -29,6 +28,8 @@ private:
     std::map<int, std::unique_ptr<ICommand>> commands;
     void setCommands(); // set map of commands
     std::mutex mtx; // For thread-safe access to the BloomFilter
+
+    void handleClient(int clientSock);
     
     
 public:
