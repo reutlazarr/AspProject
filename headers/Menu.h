@@ -7,12 +7,13 @@
 #include <sstream>
 #include <iostream>
 #include <limits>
+#include <sys/socket.h>
 
 // header for Menu
 class Menu {
     
 public:
-    std::stringstream nextCommand(); // return the next command fron the user
+    std::stringstream nextCommand(int clientSock); // return the next command fron the user
 
     // get std::stringstream
     // return int for the commannd, and string for the url

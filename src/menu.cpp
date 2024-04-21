@@ -7,13 +7,22 @@
 #include <limits>
 
 // return the next command fron the user
-std::stringstream Menu::nextCommand() {
-    // Get user input
-    //std::cout << "Enter command (1 or 2) and URL: " << std::endl;
-    std::string line;
-    std::getline(std::cin, line);
-    std::stringstream input(line);
-    return input;
+std::stringstream Menu::nextCommand(int clientSock) {
+    char buffer[1024];
+    int bytes_read = recv(clientSock, buffer, sizeof(buffer), 0);
+    if (bytes_read <= 0) {
+        // Handle errors or disconnections
+        return std::stringstream();  // Return an empty stringstream on error
+    }
+    return std::stringstream(std::string(buffer, bytes_read));
+
+
+    // // Get user input
+    // //std::cout << "Enter command (1 or 2) and URL: " << std::endl;
+    // std::string line;
+    // std::getline(std::cin, line);
+    // std::stringstream input(line);
+    // return input;
 }
 
 std::pair<int, std::string> Menu::executeCommand(std::stringstream& input) {

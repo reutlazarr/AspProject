@@ -45,12 +45,14 @@ void App::run() {
 
     if (bind(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
         perror("error binding socket");
-        return;  // Corrected: no value returned
+        //close(sock);
+        return;
     }
 
     if (listen(sock, 5) < 0) {
         perror("error listening to a socket");
-        return;  // Corrected: no value returned
+        //close(sock);
+        return;
     }
 
     std::cout << "Server is running on port " << server_port << std::endl;
@@ -66,47 +68,41 @@ void App::run() {
 
         std::thread clientThread(&App::handleClient, this, client_sock);
         clientThread.detach(); // Detach the thread to handle the client independently
-
-        // std::stringstream input = menu.nextCommand();
-        // auto task = menu.executeCommand(input); // should get pair of command and url
-
-        // // Check for invalid command
-        // if (task.first == -1) {
-        //     // Silently handle invalid input and continue the loop
-        //     continue;
-        // }
-
-        // // Execute valid command
-        // if (commands.find(task.first) != commands.end()) {
-        //     std::lock_guard<std::mutex> lock(mtx);
-        //     std::string isMalicious = commands[task.first]->execute(*bloomFilter, task.second);
-        //     std::cout << isMalicious << std::endl;
-        // } else {
-        //     // Handle the case where the command is not found in the map
-        //     // This can be silent or you can log it as needed
-        // }
-    }    
+    }
+    // Close the server socket when done
+    //close(sock);   
 }
 
 void App::handleClient(int clientSock) {
-    char buffer[1024];
+    //char buffer[1024];
     while (true) {
-        memset(buffer, 0, sizeof(buffer));
-        ssize_t bytesRead = read(clientSock, buffer, sizeof(buffer) - 1);
-        if (bytesRead <= 0) {
-            std::cerr << "Error reading from socket or connection closed\n";
-            break;
-        }
+        // memset(buffer, 0, sizeof(buffer));
+        // ssize_t bytesRead = read(clientSock, buffer, sizeof(buffer) - 1);
+        // if (bytesRead <= 0) {
+        //     std::cerr << "Error reading from socket or connection closed\n";
+        //     break;
+        // }
 
-        std::string input(buffer);
-        std::stringstream received(input);
-        auto task = menu.executeCommand(received);
+        // std::string input(buffer);
+        // std::stringstream received(input);
 
-        if (task.first != -1 && commands.find(task.first) != commands.end()) {
+        std::stringstream input = menu.nextCommand(clientSock);
+        auto task = menu.executeCommand(input); // should get pair of command and url
+
+        // Check for invalid command
+        if (task.first == -1) {
+            // Silently handle invalid input and continue the loop
+            std::string error_msg = "Invalid or empty input\n";
+            std::cout << clientSock << std::endl;
+            std::cout << error_msg << std::endl;
+            send(clientSock, error_msg.c_str(), error_msg.length(), 0);
+            //continue;
+        } else if (task.first != -1 && commands.find(task.first) != commands.end()) {
             std::lock_guard<std::mutex> lock(mtx);
-            std::string response = commands[task.first]->execute(*bloomFilter, task.second);
-            std::cout << response << std::endl;
-            send(clientSock, response.c_str(), response.length(), 0);
+            std::string isMalicious = commands[task.first]->execute(*bloomFilter, task.second);
+            std::cout << isMalicious << std::endl;
+            std::cout << clientSock << std::endl;
+            send(clientSock, isMalicious.c_str(), isMalicious.length(), 0);
         }
     }
     close(clientSock);
