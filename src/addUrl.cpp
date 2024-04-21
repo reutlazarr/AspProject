@@ -10,13 +10,14 @@
 // Add Url to the BloomFilter and to the black list
 std::string AddUrl::execute(BloomFilter& bloomFilter, const std::string& url) {
     addUrlToRealList(url, bloomFilter.getRealBlackListRef());
-    // Loop over all the hashFunctions
-    for (auto& hashFunction : bloomFilter.getHashFunctions()) {
-        size_t hashValue = (*hashFunction)(url);
-        size_t index = hashValue % bloomFilter.getBitArray().size();
-        // Add url to bloomFilter by making the index number to true
-        bloomFilter.getBitArray()[index] = true;
-    }
+    // // Loop over all the hashFunctions
+    // for (auto& hashFunction : bloomFilter.getHashFunctions()) {
+    //     size_t hashValue = (*hashFunction)(url);
+    //     size_t index = hashValue % bloomFilter.getBitArray().size();
+    //     // Add url to bloomFilter by making the index number to true
+    //     bloomFilter.getBitArray()[index] = true;
+    // }
+    bloomFilter.add(url);
     return "added";
 
 }
