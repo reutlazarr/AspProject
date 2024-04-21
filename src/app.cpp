@@ -18,7 +18,8 @@ App::App() : menu(Menu()) {
     hashFunctions[2] = std::make_unique<HashFunction2>();
     bloomFilterManager = BloomFilterManager(menu, std::move(hashFunctions));
     setCommands();
-    bloomFilter = bloomFilterManager.createBloomFilter();
+    //bloomFilter = bloomFilterManager.createBloomFilter();
+    bloomFilter = std::make_shared<BloomFilter>(bloomFilterManager.createBloomFilter());
 }
 
 // set map of commands
@@ -41,7 +42,7 @@ void App::run() {
 
         // Execute valid command
         if (commands.find(task.first) != commands.end()) {
-            std::string isMalicious = commands[task.first]->execute(bloomFilter, task.second);
+            std::string isMalicious = commands[task.first]->execute(*bloomFilter, task.second);
             std::cout << isMalicious << std::endl;
         } else {
             // Handle the case where the command is not found in the map
