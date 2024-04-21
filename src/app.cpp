@@ -20,7 +20,7 @@ App::App() : menu(Menu()) {
     bloomFilterManager = BloomFilterManager(menu, std::move(hashFunctions));
     setCommands();
     //bloomFilter = bloomFilterManager.createBloomFilter();
-    bloomFilter = std::make_shared<BloomFilter>(bloomFilterManager.createBloomFilter());
+    //bloomFilter = std::make_shared<BloomFilter>(bloomFilterManager.createBloomFilter());
 }
 
 // set map of commands
@@ -49,20 +49,51 @@ void App::startServer(int server_port) {
 
     if (bind(sock, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
         perror("error binding socket");
-        //close(sock);
+        close(sock);
         return;
     }
     if (listen(sock, 5) < 0) {
         perror("error listening to a socket");
-        //close(sock);
+        close(sock);
         return;
     }
     std::cout << "Server is running on port " << server_port << std::endl;
 
+    socklen_t addr_len = sizeof(sin);
+    bool isInitialized = false;
+    // Main server loop
+    while (!isInitialized) {
+        // struct sockaddr_in client_sin;
+        // socklen_t addr_len = sizeof(client_sin);
+        int client_sock = accept(sock, (struct sockaddr *)&sin, &addr_len);
+        if (client_sock < 0) {
+            perror("error accepting client");
+            continue;
+        }
+        std::cout << "Connection accepted from client: " << client_sock << std::endl;
+        std::stringstream input = menu.nextCommand(client_sock);
+        std::cout << "input: " << input.str() << std::endl;
+        if (input.str().empty()) {
+            std::cout << client_sock << std::endl;
+            std::cerr << "Error reading from socket or connection closed\n";
+        }
+        try {
+            bloomFilter = std::make_shared<BloomFilter>(bloomFilterManager.createBloomFilter(input));
+            std::string successMsg = "Bloom Filter initialized successfully\n";
+            send(client_sock, successMsg.c_str(), successMsg.length(), 0);
+            isInitialized = true;  // Set flag to exit the initialization loop
+        } catch (const std::exception& e) {
+            std::string errorMsg = "Initialization failed: " + std::string(e.what()) + "\n";
+            send(client_sock, errorMsg.c_str(), errorMsg.length(), 0);
+        }
+        close(client_sock);  // Close initial connection
+    }
+
+    // Now proceed to handle other clients
     while (true) {
-        struct sockaddr_in client_sin;
-        socklen_t addr_len = sizeof(client_sin);
-        int client_sock = accept(sock, (struct sockaddr *)&client_sin, &addr_len);
+        // struct sockaddr_in client_sin;
+        // socklen_t addr_len = sizeof(client_sin);
+        int client_sock = accept(sock, (struct sockaddr *)&sin, &addr_len);
         if (client_sock < 0) {
             perror("error accepting client");
             continue;
@@ -75,19 +106,7 @@ void App::startServer(int server_port) {
 }
 
 void App::handleClient(int clientSock) {
-    //char buffer[1024];
     while (true) {
-        // memset(buffer, 0, sizeof(buffer));
-        // ssize_t bytesRead = read(clientSock, buffer, sizeof(buffer) - 1);
-        // if (bytesRead <= 0) {
-        //     std::cerr << "Error reading from socket or connection closed\n";
-        //     break;
-        // }
-
-        // std::string input(buffer);
-        // std::stringstream received(input);
-        // auto task = menu.executeCommand(received); // should get pair of command and url
-
         std::stringstream input = menu.nextCommand(clientSock);
         if (input.str().empty()) {
             std::cout << clientSock << std::endl;

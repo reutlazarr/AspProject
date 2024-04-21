@@ -31,7 +31,7 @@ public:
     // constractor
     BloomFilterManager() = default; 
     BloomFilterManager(Menu menu, std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap);
-    BloomFilter createBloomFilter(); // create bloomFilter 
+    BloomFilter createBloomFilter(std::stringstream& input); // create bloomFilter 
 };
 
 #endif // BLOOMFILTERMANAGER_H

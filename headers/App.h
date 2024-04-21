@@ -31,6 +31,7 @@ private:
 
     void handleClient(int clientSock);
     void startServer(int port);
+    void initalizeBloomFilter(int sock);
     
     
 public:
