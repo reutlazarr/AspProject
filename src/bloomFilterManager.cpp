@@ -17,39 +17,60 @@
 BloomFilterManager::BloomFilterManager(Menu menu, std::map<int, std::unique_ptr<IHashFunction>> hashFunctionsMap) : menu(menu), hashFunctionsMap(std::move(hashFunctionsMap)) {}
 
 // create bloomFilter
-BloomFilter BloomFilterManager::createBloomFilter() {
+BloomFilter BloomFilterManager::createBloomFilter(std::stringstream& input) {
     CheckInput checkInput;
-    while (true) {
-        try {
-            // read the first line of input
-            std::string line;
-            //std::cout << "Enter array size and hash function IDs: ";
-            std::getline(std::cin, line);
-            std::stringstream firstInput(line); // e.g first input = 8 1 2
-            std::stringstream inputCopy(firstInput.str()); // copy std::stringstream
+    std::stringstream inputCopy(input.str()); // copy std::stringstream
 
-            if (checkInput.checkArraySize(inputCopy)) {
-                continue;
-            }
-            int arraySize = readArraySize(firstInput);
-
-            std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
-            if (checkInput.checkHashFunctions(inputCopy, hashFunctionsMap)) {
-                continue;
-                //throw std::invalid_argument("Invalid hash functions.");
-            }
-            std::set<int> uniqueHashFunctionIds; // create a set to keep track of unique hash function IDs
-            hashFunctions = readHashFunctions(firstInput, uniqueHashFunctionIds);
-            
-            if (!hashFunctions.empty()) {
-                // Create BloomFilter
-                return BloomFilter(arraySize, std::move(hashFunctions));
-            }
-
-        } catch (const std::invalid_argument& ex) {
-                menu.displayError("Error: " + std::string(ex.what()));
-        }
+    if (checkInput.checkArraySize(inputCopy)) {
+        throw std::invalid_argument("Invalid array size.");
     }
+    int arraySize = readArraySize(input);
+
+    std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
+    if (checkInput.checkHashFunctions(inputCopy, hashFunctionsMap)) {
+        throw std::invalid_argument("Invalid hash functions.");
+    }
+    std::set<int> uniqueHashFunctionIds; // create a set to keep track of unique hash function IDs
+    hashFunctions = readHashFunctions(input, uniqueHashFunctionIds);
+    if (!hashFunctions.empty()) {
+        return BloomFilter(arraySize, std::move(hashFunctions));
+    } else {
+        throw std::invalid_argument("No hash functions provided.");
+    }
+
+    // while (true) {
+    //     try {
+    //         // // read the first line of input
+    //         // std::string line;
+    //         // //std::cout << "Enter array size and hash function IDs: ";
+    //         // std::getline(std::cin, line);
+    //         // std::stringstream firstInput(line); // e.g first input = 8 1 2
+    //         // std::stringstream inputCopy(firstInput.str()); // copy std::stringstream
+
+    //         std::stringstream inputCopy(input); // copy std::stringstream
+
+    //         if (checkInput.checkArraySize(inputCopy)) {
+    //             continue;
+    //         }
+    //         int arraySize = readArraySize(firstInput);
+
+    //         std::vector<std::unique_ptr<IHashFunction>> hashFunctions;
+    //         if (checkInput.checkHashFunctions(inputCopy, hashFunctionsMap)) {
+    //             continue;
+    //             //throw std::invalid_argument("Invalid hash functions.");
+    //         }
+    //         std::set<int> uniqueHashFunctionIds; // create a set to keep track of unique hash function IDs
+    //         hashFunctions = readHashFunctions(firstInput, uniqueHashFunctionIds);
+            
+    //         if (!hashFunctions.empty()) {
+    //             // Create BloomFilter
+    //             return BloomFilter(arraySize, std::move(hashFunctions));
+    //         }
+
+    //     } catch (const std::invalid_argument& ex) {
+    //             menu.displayError("Error: " + std::string(ex.what()));
+    //     }
+    // }
 }
 
 // read and validate the array size

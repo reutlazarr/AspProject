@@ -6,6 +6,13 @@
 
 #include <map>
 #include <memory>
+#include <thread>
+#include <mutex>
+#include <vector>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
 #include "BloomFilter.h"
 #include "BloomFilterManager.h"
 #include "ICommand.h"
@@ -15,9 +22,19 @@ class App {
     
 private:
     Menu menu;
-    BloomFilterManager bloomFilterManager; 
+    BloomFilterManager bloomFilterManager;
+    //BloomFilter bloomFilter;
+    std::shared_ptr<BloomFilter> bloomFilter;  // Shared BloomFilter instance
     std::map<int, std::unique_ptr<ICommand>> commands;
     void setCommands(); // set map of commands
+    std::mutex mtx; // For thread-safe access to the BloomFilter
+
+    void handleClient(int clientSock);
+    void startServer(int port);
+    int setupServerSocket(int server_port);
+    bool initializeBloomFilter(int client_sock);
+    void handleClientConnections(int sock, struct sockaddr_in& sin, socklen_t addr_len);
+    
     
 public:
     // constractor
