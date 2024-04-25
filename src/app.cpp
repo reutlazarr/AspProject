@@ -63,37 +63,6 @@ void App::startServer(int server_port)
     }
 }
 
-// void App::startServer2(int server_port)
-// {
-//     int sock = setupServerSocket(server_port);
-//     if (sock < 0)
-//         return;
-
-//     struct sockaddr_in sin;
-//     socklen_t addr_len = sizeof(sin);
-//     memset(&sin, 0, sizeof(sin));
-//     bool isInitialized = false;
-//     // Main server loop
-//     int clientSock = 0;
-//     while (!isInitialized)
-//     {
-//         clientSock = accept(sock, (struct sockaddr *)&sin, &addr_len);
-//         if (clientSock < 0)
-//         {
-//             perror("error accepting client");
-//             continue;
-//         }
-//         std::cout << "Connection accepted from client: " << clientSock << std::endl;
-//         isInitialized = initializeBloomFilter(clientSock);
-//         std::thread clientThread(&App::handleClient, this, clientSock);
-//         // close(clientSock); // Close initial connection, needed????
-//     }
-
-//     // Now proceed to handle other clients
-//     handleClientConnections(sock, sin, addr_len);
-//     close(sock); // Close the server socket when done
-// }
-
 int App::setupServerSocket(int server_port)
 {
     int sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -138,7 +107,7 @@ bool App::initializeBloomFilter(int clientSock)
     {
         bloomFilter = std::make_shared<BloomFilter>(bloomFilterManager.createBloomFilter(input));
         std::string successMsg = "Bloom Filter initialized successfully\n";
-        send(clientSock, successMsg.c_str(), successMsg.length(), 0);
+        send(clientSock, "true", 4, 0);
         std::cout << successMsg << std::endl;
         return true;
     }
@@ -150,21 +119,6 @@ bool App::initializeBloomFilter(int clientSock)
         return false;
     }
 }
-
-// void App::handleClientConnections(int sock, struct sockaddr_in &sin, socklen_t addr_len)
-// {
-//     // while (true)
-//     // {
-//     int clientSock = accept(sock, (struct sockaddr *)&sin, &addr_len);
-//     std::cout << "connected with a new client" << std::endl;
-//     if (clientSock < 0)
-//     {
-//         perror("error accepting client");
-//     }
-//     std::thread clientThread(&App::handleClient, this, clientSock);
-//     // clientThread.detach();
-//     // }
-// }
 
 // Function to split a string into two parts based on the first space character
 std::pair<std::string, std::string> split_string(const std::string &str)
@@ -194,11 +148,9 @@ void App::handleClient(int clientSock)
         {
             std::cout << clientSock << std::endl;
             std::cerr << "Error reading from socket or connection closed\n";
-            // result = "{\"error\":\"Invalid command or empty input\"}";
             break; // Exit loop if the connection is closed or error occurs
         }
         int command = 0;
-        // auto task = menu.executeCommand(input); // should get pair of command and url
         try
         {
             command = std::stoi(input_str.substr(0, 1));
@@ -218,26 +170,10 @@ void App::handleClient(int clientSock)
             continue;
         }
         std::string url = input_str.substr(2);
-
-        // // Check for invalid command
-        // if (task.first == -1)
-        // {
-        //     // Silently handle invalid input and continue the loop
-        //     std::cout << clientSock << std::endl;
-        //     std::string error_msg = "Invalid or empty input\n";
-        //     std::cout << error_msg << std::endl;
-        //     send(clientSock, error_msg.c_str(), error_msg.length(), 0);
-        //     // continue;
-        // }
-        // else if (task.first != -1 && commands.find(task.first) != commands.end())
-
-        // {
         std::lock_guard<std::mutex> lock(mtx);
         std::string isMalicious = commands[command]->execute(*bloomFilter, url);
-        // std::cout << clientSock << std::endl;
         std::cout << isMalicious << std::endl;
-        send(clientSock, isMalicious.c_str(), isMalicious.length(), 0);
-        // }
+        int bytes_sent = send(clientSock, isMalicious.c_str(), isMalicious.length(), 0);
     }
     close(clientSock);
 }
