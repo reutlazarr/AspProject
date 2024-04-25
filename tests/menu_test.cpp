@@ -1,7 +1,6 @@
  // menu_test.cpp
 
 #include <gtest/gtest.h>
-#include <sstream>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <cstring>
@@ -68,21 +67,6 @@ TEST(MenuTest, NextCommand_HandlesPartialData) {
     close(serverSock);
     close(clientSock);
 }
-
-
-// TEST(MenuTest, NextCommand) {
-//     std::istringstream userInput("0\n"); // String simulates the user input
-//     std::streambuf* originalInput = std::cin.rdbuf(); // Stores the original stream buffer of std::cin in a pointer
-//     std::cin.rdbuf(userInput.rdbuf()); // Replaces the stream buffer of std::cin with the stream buffer of the user input stringstream
-
-//     std::stringstream output = menu.nextCommand(); // Assuming nextCommand returns a std::stringstream
-//     std::string outputContent = output.str();
-//     EXPECT_EQ(outputContent, "0");
-//     EXPECT_NE(outputContent, "1");
-
-//     std::cin.clear();
-//     std::cin.rdbuf(originalInput); // Restoring the original stream buffer
-// }
 
 // Tests for executeCommand in menu
 TEST(MenuTest, ExecuteCommand) {
