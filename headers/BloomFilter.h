@@ -3,15 +3,16 @@
 #ifndef BLOOM_FILTER_H
 #define BLOOM_FILTER_H
 
-#include<string>
-#include<vector>
+#include <string>
+#include <vector>
 #include <memory>
 #include "IHashFunction.h"
 #include "HashFunction1.h"
 #include "HashFunction2.h"
 #include "RealBlackList.h"
 
-class BloomFilter {
+class BloomFilter
+{
 
 private:
     int sizeArray;
@@ -27,12 +28,13 @@ public:
 
     // getters
     int getSizeArray();
-    const std::vector<std::unique_ptr<IHashFunction>>& getHashFunctions() const;
-    std::vector<bool>& getBitArray();
-    RealBlackList& getRealBlackListRef();
+    const std::vector<std::unique_ptr<IHashFunction>> &getHashFunctions() const;
+    std::vector<bool> &getBitArray();
+    RealBlackList &getRealBlackListRef();
 
-    void add(const std::string& url);
-    bool contains(const std::string& url);
+    void add(const std::string &url);
+    bool contains(const std::string &url);
+    std::string toString();
 };
 
 #endif // BLOOM_FILTER_H

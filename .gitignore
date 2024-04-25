@@ -31,3 +31,10 @@
 *.app
 
 build/
+
+Testing/
+game
+server
+theGame
+.vscode/
+bloomFilter

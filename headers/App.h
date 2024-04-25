@@ -3,7 +3,6 @@
 #ifndef APP_H
 #define APP_H
 
-
 #include <map>
 #include <memory>
 #include <thread>
@@ -18,24 +17,25 @@
 #include "ICommand.h"
 
 // header for app
-class App {
-    
+class App
+{
+
 private:
     Menu menu;
     BloomFilterManager bloomFilterManager;
-    //BloomFilter bloomFilter;
-    std::shared_ptr<BloomFilter> bloomFilter;  // Shared BloomFilter instance
+    // BloomFilter bloomFilter;
+    std::shared_ptr<BloomFilter> bloomFilter; // Shared BloomFilter instance
     std::map<int, std::unique_ptr<ICommand>> commands;
     void setCommands(); // set map of commands
-    std::mutex mtx; // For thread-safe access to the BloomFilter
+    std::mutex mtx;     // For thread-safe access to the BloomFilter
+    bool isInitialized;
 
     void handleClient(int clientSock);
     void startServer(int port);
     int setupServerSocket(int server_port);
     bool initializeBloomFilter(int client_sock);
-    void handleClientConnections(int sock, struct sockaddr_in& sin, socklen_t addr_len);
-    
-    
+    void handleClientConnections(int sock, struct sockaddr_in &sin, socklen_t addr_len);
+
 public:
     // constractor
     App();
