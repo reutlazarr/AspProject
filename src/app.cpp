@@ -27,11 +27,13 @@ void App::setCommands() {
     commands[2] = std::make_unique<IsBlackList>();
 }
 
+// running the app
 void App::run() {
     const int server_port = 5555;
-    startServer(server_port); // Example port number 
+    startServer(server_port);
 }
 
+// start running the server
 void App::startServer(int server_port) {
     int sock = setupServerSocket(server_port);
     if (sock < 0) return;
@@ -84,6 +86,7 @@ int App::setupServerSocket(int server_port) {
     return sock;
 }
 
+// initialize the bloomFilter
 bool App::initializeBloomFilter(int client_sock) {
     std::stringstream input = menu.nextCommand(client_sock);
     std::cout << "input: " << input.str() << std::endl;
@@ -103,6 +106,7 @@ bool App::initializeBloomFilter(int client_sock) {
     }
 }
 
+// manager the clients connections
 void App::handleClientConnections(int sock, struct sockaddr_in& sin, socklen_t addr_len) {
     while (true) {
         int client_sock = accept(sock, (struct sockaddr *)&sin, &addr_len);
@@ -115,6 +119,7 @@ void App::handleClientConnections(int sock, struct sockaddr_in& sin, socklen_t a
     }
 }
 
+// handle the communication with each client tread
 void App::handleClient(int clientSock) {
     while (true) {
         std::stringstream input = menu.nextCommand(clientSock);
@@ -124,7 +129,7 @@ void App::handleClient(int clientSock) {
             //result = "{\"error\":\"Invalid command or empty input\"}";
             break;  // Exit loop if the connection is closed or error occurs
         }
-        
+
         auto task = menu.executeCommand(input); // should get pair of command and url
         // Check for invalid command
         if (task.first == -1) {
