@@ -107,14 +107,14 @@ bool App::initializeBloomFilter(int client_sock) {
     {
         bloomFilter = std::make_shared<BloomFilter>(bloomFilterManager.createBloomFilter(input));
         std::string successMsg = "Bloom Filter initialized successfully\n";
-        send(clientSock, "true", 4, 0);
+        send(client_sock, "true", 4, 0);
         std::cout << successMsg << std::endl;
         return true;
     }
     catch (const std::exception &e)
     {
         std::string errorMsg = "Initialization failed: " + std::string(e.what()) + "\n";
-        send(clientSock, errorMsg.c_str(), errorMsg.length(), 0);
+        send(client_sock, errorMsg.c_str(), errorMsg.length(), 0);
         std::cout << errorMsg << std::endl;
         return false;
     }
