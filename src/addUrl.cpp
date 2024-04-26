@@ -13,7 +13,7 @@ std::string AddUrl::execute(BloomFilter &bloomFilter, const std::string &url)
     addUrlToRealList(url, bloomFilter.getRealBlackListRef());
     bloomFilter.add(url);
     std::cout << bloomFilter.toString() << std::endl;
-    return "true";
+    return "added";
 }
 
 // Add a new URL to the real black list - in order to show false positive
