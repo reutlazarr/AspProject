@@ -15,8 +15,7 @@
 // return true if the input not as format: {int, string}, e.g not 1 "exempal.com"
 // return false otherwise
 bool CheckInput::checkExecuteCommand(std::stringstream& input) {
-    
-    std::cout << "ch: " << input.str() << std::endl;
+
     int command;
     std::string url;
     input >> command >> url;
@@ -24,7 +23,7 @@ bool CheckInput::checkExecuteCommand(std::stringstream& input) {
     input >> std::ws;
     // invalid input throw std::invalid_argument
     if (input.fail() || input.peek() != EOF) {
-        std::cout << "h: " << input.str() << std::endl;
+        // std::cout << "h: " << input.str() << std::endl;
         return true;
     }
     return false;

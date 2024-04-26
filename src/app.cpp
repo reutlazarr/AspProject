@@ -69,7 +69,7 @@ void App::startServer(int server_port) {
         std::thread clientThread(&App::handleClient, this, client_sock);
         clientThread.detach(); // Detach the thread to allow it to run independently
     }
-    // close(sock); // Close the server socket when done
+    close(sock); // Close the server socket when done
 }
 
 int App::setupServerSocket(int server_port) {
