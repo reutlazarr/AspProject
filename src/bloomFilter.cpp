@@ -9,37 +9,30 @@
 
 // constractor
 BloomFilter::BloomFilter(int sizeArray, std::vector<std::unique_ptr<IHashFunction>> hashFunctions)
-    : bitArray(sizeArray, false), hashFunctions(std::move(hashFunctions)), realBlackListRef()
-{
+    : bitArray(sizeArray, false), hashFunctions(std::move(hashFunctions)), realBlackListRef() {
     this->sizeArray = sizeArray;
 }
 
 // getters
-int BloomFilter::getSizeArray()
-{
+int BloomFilter::getSizeArray() {
     return sizeArray;
 }
 
-const std::vector<std::unique_ptr<IHashFunction>> &BloomFilter::getHashFunctions() const
-{
+const std::vector<std::unique_ptr<IHashFunction>> &BloomFilter::getHashFunctions() const {
     return hashFunctions;
 }
 
-std::vector<bool> &BloomFilter::getBitArray()
-{
+std::vector<bool> &BloomFilter::getBitArray() {
     return bitArray;
 }
 
-RealBlackList &BloomFilter::getRealBlackListRef()
-{
+RealBlackList &BloomFilter::getRealBlackListRef() {
     return realBlackListRef;
 }
 
-void BloomFilter::add(const std::string &url)
-{
+void BloomFilter::add(const std::string &url) {
     // Loop over all the hashFunctions
-    for (auto &hashFunction : hashFunctions)
-    {
+    for (auto &hashFunction : hashFunctions) {
         size_t hashValue = (*hashFunction)(url);
         std::cout << hashValue << std::endl;
         // Add url to bloomFilter by making the index number to true
@@ -47,34 +40,28 @@ void BloomFilter::add(const std::string &url)
     }
 }
 
-bool BloomFilter::contains(const std::string &url)
-{
+bool BloomFilter::contains(const std::string &url) {
     // Loop over all the hashFunctions
-    for (auto &hashFunction : hashFunctions)
-    {
+    for (auto &hashFunction : hashFunctions) {
         size_t hashValue = (*hashFunction)(url); // do hash to url and get it's value
         // Check if the number index in bloomFilter is not set
-        if (!bitArray[hashValue % bitArray.size()])
-        {
+        if (!bitArray[hashValue % bitArray.size()]) {
             return false; // not blacklisted
         }
     }
     return true;
 }
 
-std::string BloomFilter::toString()
-{
+std::string BloomFilter::toString() {
     auto blacklist = this->realBlackListRef.getRealList();
     std::string result;
     result += "The blacklist:\n";
-    for (auto it = blacklist.begin(); it != blacklist.end(); ++it)
-    {
+    for (auto it = blacklist.begin(); it != blacklist.end(); ++it) {
         result += *it;
         result += "\n";
     }
     result += "The bloomfilter:\n";
-    for (auto it = this->bitArray.begin(); it != this->bitArray.end(); ++it)
-    {
+    for (auto it = this->bitArray.begin(); it != this->bitArray.end(); ++it) {
         result += std::to_string(*it);
         result += "\t";
     }
