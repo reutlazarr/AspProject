@@ -4,7 +4,7 @@ name: Docker Image CI
 # The workflow will run when there is a pull request into the main branch
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main_tcp" ]
     
 #Defined the actions of the file
 jobs:
