@@ -2,7 +2,7 @@ name: Pull Request CI
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main_tcp" ]
 #the missions of the file
 jobs:
   #the name of the job
