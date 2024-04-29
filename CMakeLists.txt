@@ -4,6 +4,9 @@ project(bloomFilter)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Add pthread to compile options globally (affects both executables)
+add_compile_options(-pthread)
+
 # Fetch GoogleTest
 include(FetchContent)
 FetchContent_Declare(
@@ -46,6 +49,7 @@ add_executable(CalcMain src/main.cpp ${SOURCE_FILES})
 add_executable(CalcTests ${TEST_FILES} ${SOURCE_FILES})
 
 # Link Google Test to the test executable
+target_link_libraries(CalcMain PRIVATE pthread)
 target_link_libraries(CalcTests PRIVATE gtest gtest_main pthread)
 
 # Include the source directory for tests

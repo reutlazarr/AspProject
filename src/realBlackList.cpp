@@ -5,17 +5,13 @@
 #include <iostream>
 
 // getters
-std::vector<std::string> &RealBlackList::getRealList()
-{
+std::vector<std::string> &RealBlackList::getRealList() {
     return realBlackList;
 }
 
-bool RealBlackList::isUrlInBlackList(const std::string &url) const
-{
-    for (const std::string &item : realBlackList)
-    {
-        if (item == url)
-        {
+bool RealBlackList::isUrlInBlackList(const std::string &url) const {
+    for (const std::string &item : realBlackList) {
+        if (item == url) {
             return true;
         }
     }
