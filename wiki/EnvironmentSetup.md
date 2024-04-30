@@ -22,6 +22,7 @@ git clone --branch main_server https://github.com/BarVinizky/FacebookApp.git
 
 # Compilation Instructions
 Follow these steps to compile the BloomFilter application.
+For usingthe BloomFilter you can use eathr dokerhub or the next instructions.
 
 ## BloomFilter Compilation
 Navigate to the AspProject directory which containing the BloomFilter project and set up the build environment with these commands:
@@ -35,6 +36,12 @@ cmake --build build
 ```bash
 g++ -o bloomFilter -Iheaders src/main.cpp src/app.cpp src/bloomFilterManager.cpp src/menu.cpp src/hashFunction1.cpp src/hashFunction2.cpp src/addUrl.cpp src/isBlackList.cpp src/bloomFilter.cpp src/realBlackList.cpp src/checkInput.cpp -std=c++14 -pthread
 ```
+
+## BloomFilter with doker
+
+
+# Installation Steps for Client Applications
+Follow these steps to install all required dependencies for the client application.
 
 ## Installation Steps for Node.js Applications
 Before running the FacebookServer, install all required Node.js dependencies by navigating to the project directory containing the `package.json` file and running:

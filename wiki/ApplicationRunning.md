@@ -11,6 +11,10 @@ cd AspProject  # Make sure to be in the correct directory
 ./bloomFilte
 ```
 
+## Running BloomFilter with the doker
+
+
+
 ## Running Node Server
 Start the FacebookServer by ensuring you are in the server directory and then executing the start command:
 ```bash
