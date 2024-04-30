@@ -25,6 +25,10 @@ Whenever we release a new version of the code, the Docker image is automatically
 
 ![Screenshot 2024-04-30 222047](https://github.com/reutlazarr/AspProject/assets/132810027/2fec4241-0101-47f2-9187-17426aa7e56b)
 
+![Screenshot 2024-04-30 232320](https://github.com/reutlazarr/AspProject/assets/132810027/84fde50b-1359-45ca-8565-e304767b23d2)
+
+![Screenshot 2024-04-30 232333](https://github.com/reutlazarr/AspProject/assets/132810027/332e96bf-2a57-4c34-b9ed-b1af8e2760da)
+
 ### Running Node Server
 Start the FacebookServer by ensuring you are in the server directory and then executing the start command:
 ```bash
