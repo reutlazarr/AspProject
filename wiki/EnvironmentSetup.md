@@ -39,7 +39,11 @@ g++ -o bloomFilter -Iheaders src/main.cpp src/app.cpp src/bloomFilterManager.cpp
 
 ### BloomFilter With Doker
 For those preferring Docker, you can pull the BloomFilter container from DockerHub. Ensure you have Docker installed and use the following command to pull the container:
-
+In order to build the docker, please make sure you are in the project directory, and run:
+```bash
+docker build -t bloom filter .
+```
+(Don't forget to add the dot in the end).
 
 ### Installation Steps for Node.js Applications
 Install all required Node.js dependencies for the FacebookServer by navigating to the project directory containing the `package.json` file and running:
