@@ -1,23 +1,24 @@
 # AspProject
+Date of submission: 30/4/24
 
 Welcome to the exciting journey of developing our Facbook Interface Project!
-This documentation covers everything you need to set up, run, and use the applications involved in our project.
+The AspProject is a comprehensive suite for developing and implementing a Facebook interface. This project integrates advanced data filtering with BloomFilter and a robust client-server architecture using Node.js.
 
 ## Introduction
 
-This project is structured into four main phases, each designed to create a cohesive and functional system:
-
-1. **BloomFilter Development**: Initially, we developed the BloomFilter, which serves as the foundational technology for our TCP server, providing efficient data handling capabilities.
-2. **Client Environment Setup**: We crafted two client environments:
-   - A web-based interface for accessibility through browsers.
-   - A dedicated app for enhanced mobile user engagement.
-3. **Server Environment Development**: The server infrastructure was built using Node.js to ensure seamless communication across all client interfaces and the BloomFilter.
-4. **Integration**: Finally, we integrated all components to ensure they work synchronously, providing a seamless user experience across different platforms.
+The development of this project was structured into four key phases:
+1. **BloomFilter Development**: Creation of a core component for efficient data handling in our TCP server.
+2. **Client Environment Setup**: Development of accessible client interfaces for web and mobile platforms.
+3. **Server Environment Development**: Construction of a Node.js-based server environment to facilitate communication between the BloomFilter and client interfaces.
+4. **Integration**: Seamless integration of all components to ensure they function coherently across various platforms.
 
 
 ## Documentation
 
 Comprehensive documentation detailing the setup, compilation, and operational instructions for the AspProject is housed within the `wiki` directory of this repository. These documents provide step-by-step guidance to help you effectively set up and utilize the applications:
-- [Home](./wiki/Home.md): The starting point of the documentation, offering an overview and navigation to more detailed guides.
-- [Setup Instructions](./wiki/EnvironmentSetup.md): Detailed steps to prepare your environment for the AspProject.
-- [Running the Applications](./wiki/ApplicationRunning.md): Instructions on how to run and interact with the applications.
+- [Home](./wiki/Home.md) - Provides an overview and links to more detailed documentation.
+- [Setup Instructions](./wiki/EnvironmentSetup.md) - Details the prerequisites and initial setup procedures.
+- [Running the Applications](./wiki/ApplicationRunning.md) - - Explains how to start and manage the server and client applications.
+- [User Guides](./wiki/) - Includes specific guides for using the web and Android applications:
+  - [Web User Guide](./wiki/WebUserGuide.md)
+  - [Android App User Guide](./wiki/AppUserGuide.md)
