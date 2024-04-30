@@ -17,14 +17,15 @@ Please ensure the node.js server is operational before you begin using the web o
 ## Getting Started
 Begin at the main screen, where you can choose to register or log in to view your feed.
 
+### Login
+Log in using the email and password you registered with.
+
+
 ### Registration
 Join our vibrant social network by registering with your details. Ensure compliance with the following conditions:
 - All fields must be filled out.
 - Your email must be unique and in a valid format.
 - Your password should be at least 8 characters long, including at least one lowercase letter, one uppercase letter, and one digit.
-
-### Login
-Log in using the email and password you registered with.
 
 
 ## Exploring the Feed
