@@ -1,7 +1,7 @@
 # User Guide
-Welcome to the official user guide for our Facebook web application. This guide will help you navigate through the app's features and functionalities, such as logging in, registering, and managing posts within the FacebookServer applications.
+Welcome to the official user guide for our Facebook web application. This guide provides step-by-step instructions to help you navigate through the app's features and functionalities, including logging in, registering, and managing posts.
 
-Please follow these steps within the web or app client. Ensure the node.js server is running beforehand.
+Please ensure the node.js server is operational before you begin using the web or app client.
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -9,44 +9,47 @@ Please follow these steps within the web or app client. Ensure the node.js serve
 - [Updating a Post](#updating-a-post)
 - [Deleting a Post](#deleting-a-post)
 - [Adding a Friend](#adding-a-friend)
-- [Managing Friendship](#managing-friendship)
+- [Managing Friendships](#managing-friendships)
 - [Viewing Friends](#viewing-friends)
-- [Additional Features](#additional-features)
-- [FAQ](#faq)
-- [Support](#support)
+- [Security Mechanisms](#security-mechanisms)
 
 ## Getting Started
-#Registration
-Fill your details and dive into our friendly social network!
+
+### Registration
+Register to join our vibrant social network by filling out your details.
 ![Registration Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/38a965eb-139e-4f40-a65b-3950636d0ea1)
 
 ### Login
-After you registered, please log in
+Please log in after you have registered.
 ![Login Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/3e913c4e-fccd-4fac-bd02-d0d84cece13e)
 
 ## Adding a Post
-You can add a post from the upper line in the feed or profile page.
+Create a new post using the options available at the top of the feed or on your profile page.
 ![Add Post Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/5cce3129-21ca-415d-a185-e9225a076dab)
 
 ## Updating a Post
-To edit your post, click on the pencil icon.
+Edit any of your posts by clicking on the pencil icon.
 ![Update Post Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/9e1c80b2-88c2-4816-9f4d-d5f5cd4ee8ff)
 
 ## Deleting a Post
-You can delete a post by clicking the "X" icon on your post.
-![Delete Post Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/your_screenshot_for_deleting_post)
+Remove a post by selecting the "X" icon on the post.
+![Delete Post Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/ad8b5666-89a8-4f18-95b5-bd497c5b81f5)
 
 ## Adding a Friend
-To add a friend, click on their photo and then on the "Add Friend" button.
-![Screenshot 2024-04-30 133043](https://github.com/reutlazarr/AspProject/assets/132810027/cd0648da-97f2-43d7-baa9-c3ce4535fb43)
+Add a friend by clicking on their photo and then on the "Add Friend" button.
+![Add Friend Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/cd0648da-97f2-43d7-baa9-c3ce4535fb43)
 
-## Managing Friendship
-You can cancel a friend request from the same location where you added them.
-![Screenshot 2024-04-30 133013](https://github.com/reutlazarr/AspProject/assets/132810027/99d0e44d-6e64-4e27-9225-bf07f0bc70fb)
+## Managing Friendships
+Cancel a pending friend request or unfriend someone from the same location.
+![Cancel Request Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/99d0e44d-6e64-4e27-9225-bf07f0bc70fb)
+![Unfriend Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/b644cf9d-c9dd-443d-b4f8-b0492d3a27ac)
 
 ## Viewing Friends
-Once you are friends, you can view the person's friends by clicking on the friends icon, or watching you own friends by clicking on the "friends" icon.
-![Notifications Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/b368ff25-2b5e-4554-a7f0-c7c32ff79eae)
+View a friend's connections by clicking on the friends icon, or see your own friends list by selecting your "friends" tab.
+![Friends List Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/b368ff25-2b5e-4554-a7f0-c7c32ff79eae)
 
+## Security Mechanisms
+Our app uses advanced filters and maintains a blacklist to ensure URL security. If a malicious URL is detected, an alert will be displayed.
+![Security Alert Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/6ba7d9c6-2367-42c6-a1ff-e9875eda277e)
 
-![View Friends Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/your_screenshot_for_viewing_friends)
+Enjoy your experience with our web application!
