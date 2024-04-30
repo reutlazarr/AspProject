@@ -18,12 +18,7 @@ cd AspProject  # Make sure to be in the correct directory
 ### BloomFilter With Doker
 For those preferring Docker, you can pull the BloomFilter container from DockerHub. Ensure you have Docker installed and use the following command to pull the container.
 
-In order to build the docker, please make sure you are in the project directory, and run:
-```
-docker build -t bloom filter .
-```
-(Don't forget to add the dot in the end)
-then, run:
+After building the docker, run the command:
 ```
 docker run -i -t -p 5555:5555 bloom filter
 ```
