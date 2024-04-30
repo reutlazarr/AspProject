@@ -20,8 +20,9 @@ git clone --branch main_server https://github.com/reutlazarr/FacebookWeb.git
 git clone --branch main_server https://github.com/BarVinizky/FacebookApp.git
 ```
 
-# Compilation Instructions
+# Compilation And Installation Steps Instructions
 Follow these steps to compile the BloomFilter application.
+For usingthe BloomFilter you can use eathr dokerhub or the next instructions.
 
 ## BloomFilter Compilation
 Navigate to the AspProject directory which containing the BloomFilter project and set up the build environment with these commands:
@@ -32,31 +33,43 @@ cmake -B build -S .
 cmake --build build
 ```
 
+```bash
+g++ -o bloomFilter -Iheaders src/main.cpp src/app.cpp src/bloomFilterManager.cpp src/menu.cpp src/hashFunction1.cpp src/hashFunction2.cpp src/addUrl.cpp src/isBlackList.cpp src/bloomFilter.cpp src/realBlackList.cpp src/checkInput.cpp -std=c++14 -pthread
+```
+
+## BloomFilter with doker
+
+
+
 ## Installation Steps for Node.js Applications
-Before running the FacebookServer, install all required Node.js dependencies by navigating to the project directory and running:
+Before running the FacebookServer, install all required Node.js dependencies by navigating to the project directory containing the `package.json` file and running:
 
 ```bash
 cd FacebookServer
 npm install
 ```
 
-# Running the Applications
-How to start and interact with the BloomFilter and FacebookServer applications.
 
-## Running BloomFilter
-Execute the BloomFilter application by navigating to the build directory and running the executable:
+# Installation Steps for Client Applications
+Follow these steps to install all required dependencies for the client application.
+
+## Installation Steps for FacebookWeb Applications
+Before running the FacebookWeb, install all required dependencies by navigating to the project directory containing the `package.json` file and running:
+
 ```bash
-./bloomFilte
+cd FacebookWeb
+npm install
 ```
 
-## Running Node Server
-Start the FacebookServer by ensuring you are in the server directory and then executing the start command:
-```bash
-cd FacebookServer  # Make sure to be in the correct directory
-npm start
-```
+## Installation Steps for FacebookApp Applications
+Before running the FacebookApp, make sure you have emulatur in your Android Studio.
+
+
 
 ## Additional Notes
 - Ensure that MongoDB is running at mongodb://localhost:27017 before starting the FacebookServer.
+
+
+
 - Verify that all paths and directory names are correct as per your project's directory structure.
 - Make sure that the correct branches are used for cloning, especially for projects with multiple branches.
