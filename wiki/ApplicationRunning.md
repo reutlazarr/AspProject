@@ -26,11 +26,6 @@ Whenever we release a new version of the code, the Docker image is automatically
 ![Screenshot 2024-04-30 222047](https://github.com/reutlazarr/AspProject/assets/132810027/2fec4241-0101-47f2-9187-17426aa7e56b)
 
 ### Running Node Server
-Before starting the FacebookServer, ensure MongoDB is running at mongodb://localhost:27017:
-```bash
-mongo --eval "db.runCommand({ connectionStatus: 1 })"
-```
-
 Start the FacebookServer by ensuring you are in the server directory and then executing the start command:
 ```bash
 cd FacebookServer  # Make sure to be in the correct directory
