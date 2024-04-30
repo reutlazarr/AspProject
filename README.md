@@ -9,6 +9,7 @@ clone the repository:
 git clone --branch main_tcp https://github.com/reutlazarr/AspProject
 ```
 
+## Detailes about our work
 Here's how we approached the project:
 Initially, we analyzed the project requirements and organized tasks in JIRA, categorizing them into three epics based on the instruction's key steps.
 Our first move was to ensure a smooth setup of our working environment.
@@ -21,6 +22,8 @@ Subsequently, we developed supporting classes for our application, such as menu.
 We then crafted the bloomFilterManager, which initializes the bloomFilter based on user inputs. We also added realBlackList and improved the command structure. Finally, we developed the app class to execute user commands.
 To conclude, we refined our tests and code, ensuring compatibility and functionality with Docker, as orchestrated by the YAML files.
 To integrate changes into the main branch, simply create a pull request.
+
+## Instructions for using our app
 
 **Important Notice:**
 We accidentally uploaded the build directory to the main branch. Pulling this file may cause some problems. We have tried to contact you via email because we are uncertain about editing after submission. To ensure the app runs smoothly on your machine, please follow these steps after cloning the project:
