@@ -31,7 +31,7 @@ Once logged in, you will see a feed containing posts from your friends and sugge
 
 ## Navigating to Your Profile
 Navigate from the feed to your profile by clicking on your profile photo located in the top right corner. Here you watch all the posts you uploaded. 
-![Screenshot 2024-04-30 121955](https://github.com/reutlazarr/AspProject/assets/132810027/a94f47db-76aa-482b-af90-99f220da6693)
+![Screenshot 2024-04-30 122620](https://github.com/reutlazarr/AspProject/assets/132810027/370f7bb6-d5ec-4dce-a91e-51a9fb650e19)
 
 ## Viewing Friends
 Click on the friends icon to view your friends' list or explore a friend’s connections.
