@@ -53,6 +53,13 @@ Or compile directly with g++:
 g++ -o bloomFilter -Iheaders src/main.cpp src/app.cpp src/bloomFilterManager.cpp src/menu.cpp src/hashFunction1.cpp src/hashFunction2.cpp src/addUrl.cpp src/isBlackList.cpp src/bloomFilter.cpp src/realBlackList.cpp src/checkInput.cpp -std=c++14 -pthread
 ./bloomFilter
 ```
+For those preferring Docker, you can pull the BloomFilter container from DockerHub. Ensure you have Docker installed and use the following command to pull the container:
+```bash
+# build the docker
+docker build -t bloom filter .
+# Run the docker
+docker run -i -t -p 5555:5555 bloom filter
+```
 
 ### Additional Components
 For setting up and running the FacebookServer and client applications, please clone and follow the instructions in their respective repositories:
