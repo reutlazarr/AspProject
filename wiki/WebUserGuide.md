@@ -44,7 +44,7 @@ To add a friend, click on their photo and then on the "Add Friend" button.
 You can cancel a friend request from the same location where you added them.
 
 ## Viewing Friends
-Once you are friends, you can view the person's friends by clicking on the friends icon.
+Once you are friends, you can view the person's friends by clicking on the friends icon, or watching you own friends by clicking on the "friends" icon.
 ![View Friends Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/your_screenshot_for_viewing_friends)
 
 ## Additional Features
