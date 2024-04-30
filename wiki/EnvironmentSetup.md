@@ -32,31 +32,35 @@ cmake -B build -S .
 cmake --build build
 ```
 
+```bash
+g++ -o bloomFilter -Iheaders src/main.cpp src/app.cpp src/bloomFilterManager.cpp src/menu.cpp src/hashFunction1.cpp src/hashFunction2.cpp src/addUrl.cpp src/isBlackList.cpp src/bloomFilter.cpp src/realBlackList.cpp src/checkInput.cpp -std=c++14 -pthread
+```
+
 ## Installation Steps for Node.js Applications
-Before running the FacebookServer, install all required Node.js dependencies by navigating to the project directory and running:
+Before running the FacebookServer, install all required Node.js dependencies by navigating to the project directory containing the `package.json` file and running:
 
 ```bash
 cd FacebookServer
 npm install
 ```
 
-# Running the Applications
-How to start and interact with the BloomFilter and FacebookServer applications.
+## Installation Steps for FacebookWeb Applications
+Before running the FacebookWeb, install all required dependencies by navigating to the project directory containing the `package.json` file and running:
 
-## Running BloomFilter
-Execute the BloomFilter application by navigating to the build directory and running the executable:
 ```bash
-./bloomFilte
+cd FacebookWeb
+npm install
 ```
 
-## Running Node Server
-Start the FacebookServer by ensuring you are in the server directory and then executing the start command:
-```bash
-cd FacebookServer  # Make sure to be in the correct directory
-npm start
-```
+## Installation Steps for FacebookApp Applications
+Before running the FacebookApp, make sure you have emulatur in your Android Studio.
+
+
 
 ## Additional Notes
 - Ensure that MongoDB is running at mongodb://localhost:27017 before starting the FacebookServer.
+
+
+
 - Verify that all paths and directory names are correct as per your project's directory structure.
 - Make sure that the correct branches are used for cloning, especially for projects with multiple branches.
