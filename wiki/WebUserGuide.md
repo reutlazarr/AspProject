@@ -16,12 +16,12 @@ Please follow these steps within the web or app client. Ensure the node.js serve
 - [Support](#support)
 
 ## Getting Started
-Here you can explain how users can access your app, create an account, or log in.
-
-### Registration
+#Registration
+Fill your details and dive into our friendly social network!
 ![Registration Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/38a965eb-139e-4f40-a65b-3950636d0ea1)
 
 ### Login
+After you registered, please log in
 ![Login Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/3e913c4e-fccd-4fac-bd02-d0d84cece13e)
 
 ## Adding a Post
@@ -38,10 +38,11 @@ You can delete a post by clicking the "X" icon on your post.
 
 ## Adding a Friend
 To add a friend, click on their photo and then on the "Add Friend" button.
-![Add Friend Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/your_screenshot_for_adding_friend)
+![Screenshot 2024-04-30 133043](https://github.com/reutlazarr/AspProject/assets/132810027/cd0648da-97f2-43d7-baa9-c3ce4535fb43)
 
 ## Managing Friendship
 You can cancel a friend request from the same location where you added them.
+![Screenshot 2024-04-30 133013](https://github.com/reutlazarr/AspProject/assets/132810027/99d0e44d-6e64-4e27-9225-bf07f0bc70fb)
 
 ## Viewing Friends
 Once you are friends, you can view the person's friends by clicking on the friends icon, or watching you own friends by clicking on the "friends" icon.
@@ -49,13 +50,3 @@ Once you are friends, you can view the person's friends by clicking on the frien
 
 
 ![View Friends Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/your_screenshot_for_viewing_friends)
-
-## Additional Features
-Describe other features like how to change settings, manage notifications, or any other functionality relevant to your app.
-![Settings Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/f19fdb1c-cbd7-4f0c-981b-9b7bac57c429)
-
-## FAQ
-Answer common questions that users might have about your application.
-
-## Support
-Provide contact information or links for users to get support if they face any issues or have further questions.
