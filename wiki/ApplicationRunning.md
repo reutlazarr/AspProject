@@ -47,6 +47,7 @@ npm start
 
 ### Running FacebookApp
 Ensure your Android emulator is set up and configured. Open Android Studio, navigate to the FacebookApp project, and run the application using the emulator.
+<br>
 <img width="755" alt="ScreenshotRunApp" src="https://github.com/reutlazarr/AspProject/assets/155451112/dfbb7bd0-fe6f-428a-b7db-f9b88918f3b8">
 
 
