@@ -2,6 +2,13 @@
 
 Welcome to the exciting journey of developing BloomFilter!
 
+**Important Notice for Targil 4:**
+this is the branch of targil 1. move to main_tcp branch for checking targil 4!
+clone the repository:
+```
+git clone --branch main_tcp https://github.com/reutlazarr/AspProject
+```
+
 Here's how we approached the project:
 Initially, we analyzed the project requirements and organized tasks in JIRA, categorizing them into three epics based on the instruction's key steps.
 Our first move was to ensure a smooth setup of our working environment.
