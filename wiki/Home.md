@@ -4,9 +4,8 @@ Welcome to the Project Wiki! This documentation covers everything you need to se
 
 ## Table of Contents
 - [Environment Setup](EnvironmentSetup.md)
-- [Compilation Instructions](Compilation.md)
-- [Running the Applications](ApplicationRunning.md)
-- [User Guide](UserGuide.md)
+- [User Guide for using the web](WebUserGuide.md)
+- [User Guide for using the android app](AppUserGuide.md)
 - [Troubleshooting](Troubleshooting.md)
 
 
