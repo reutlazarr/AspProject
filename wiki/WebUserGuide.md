@@ -45,12 +45,14 @@ You can cancel a friend request from the same location where you added them.
 
 ## Viewing Friends
 Once you are friends, you can view the person's friends by clicking on the friends icon, or watching you own friends by clicking on the "friends" icon.
+![Notifications Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/b368ff25-2b5e-4554-a7f0-c7c32ff79eae)
+
+
 ![View Friends Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/your_screenshot_for_viewing_friends)
 
 ## Additional Features
 Describe other features like how to change settings, manage notifications, or any other functionality relevant to your app.
 ![Settings Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/f19fdb1c-cbd7-4f0c-981b-9b7bac57c429)
-![Notifications Screenshot](https://github.com/reutlazarr/AspProject/assets/132810027/b368ff25-2b5e-4554-a7f0-c7c32ff79eae)
 
 ## FAQ
 Answer common questions that users might have about your application.
