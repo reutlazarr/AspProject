@@ -1,5 +1,25 @@
 # Environment Setup
 
+## Requirements
+Before you start, ensure you have the following tools and dependencies installed:
+- Git
+- C++ Compiler (for compiling BloomFilter)
+- Node.js and npm (for running FacebookServer)
+- MongoDB
+- Android Studio (only for running the FacebookApp client)
+
+## Clone the Repositories
+To get started, clone the necessary repositories:
+
+```bash
+git clone https://github.com/BarVinizky/FacebookServer.git
+git clone --branch main_server https://github.com/reutlazarr/FacebookWeb.git
+git clone --branch main_server https://github.com/BarVinizky/FacebookApp.git
+```
+
+
+# Environment Setup
+
 ## Prerequisites
 List all software, tools, and dependencies required.
 
@@ -64,3 +84,16 @@ How to start and interact with the BloomFilter and FacebookServer applications.
 ./bloomFilter
 
 Start the MongoDB server, then:
+
+
+
+### Compilation.md
+```markdown
+# Compilation Instructions
+
+## BloomFilter Compilation
+Navigate to the BloomFilter directory and prepare the build environment:
+
+```bash
+cmake -B build -S .
+cmake --build build
