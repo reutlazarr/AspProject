@@ -15,8 +15,11 @@ cd AspProject  # Make sure to be in the correct directory
 <img width="734" alt="ScreenshotRunBloomfilter" src="https://github.com/reutlazarr/AspProject/assets/155451112/4eceb507-b2d7-45fa-8eb6-6d7579faad7d">
 
 
-### Running BloomFilter with the doker
-To run BloomFilter using Docker, execute the following command. Ensure your Docker environment is set up and the BloomFilter image is available:
+### BloomFilter With Doker
+For those preferring Docker, you can pull the BloomFilter container from DockerHub. Ensure you have Docker installed and use the following command to pull the container.
+Whenever we release a new version of the code, the Docker image is automatically updated on DockerHub. You can download and run the Docker image, which will set up a BloomFilter server. Below are screenshots to guide you:
+
+![Screenshot 2024-04-30 213656](https://github.com/reutlazarr/AspProject/assets/132810027/0f90e9e5-1c63-4d19-bbf9-78c5dd9f26e4)
 
 
 ### Running Node Server
