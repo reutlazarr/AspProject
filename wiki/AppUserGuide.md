@@ -5,6 +5,7 @@ Please ensure the node.js server is operational before you begin using the web o
 
 ## Table of Contents
 - [Getting Started](#getting-started)
+- [Exploring the Feed](#exploring-the-feed)
 - [Adding a Post](#adding-a-post)
 - [Updating a Post](#updating-a-post)
 - [Deleting a Post](#deleting-a-post)
@@ -26,8 +27,8 @@ Join our vibrant social network by registering with your details. Ensure complia
 Log in using the email and password you registered with.
 
 
-### Feed
-Your main feed displays both your posts and those from friends and non-friends alike. You can:
+## Exploring the Feed
+Once logged in, you will see a feed containing posts from your friends and suggested posts from non-friends to help you discover new people. You can:
 - Edit your details by selecting the menu option.
 - Log out by clicking the logout button.
 - Add a new post by selecting "Add Post."
