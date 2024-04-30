@@ -12,6 +12,8 @@ Navigate to the directory containing the BloomFilter executable and run the appl
 cd AspProject  # Make sure to be in the correct directory
 ./bloomFilter
 ```
+<img width="734" alt="ScreenshotRunBloomfilter" src="https://github.com/reutlazarr/AspProject/assets/155451112/4eceb507-b2d7-45fa-8eb6-6d7579faad7d">
+
 
 ### Running BloomFilter with the doker
 To run BloomFilter using Docker, execute the following command. Ensure your Docker environment is set up and the BloomFilter image is available:
@@ -28,6 +30,8 @@ Start the FacebookServer by ensuring you are in the server directory and then ex
 cd FacebookServer  # Make sure to be in the correct directory
 npm start
 ```
+<img width="775" alt="ScreenshotRunServer" src="https://github.com/reutlazarr/AspProject/assets/155451112/1862556a-feb2-44ea-b01e-80543b00eec7">
+
 
 ## Running the client Applications
 After the applications of the server is running, you can run the applications of the client.
@@ -38,9 +42,13 @@ To start the FacebookWeb client, ensure you are in the server directory and then
 cd FacebookWeb  # Make sure to be in the correct directory
 npm start
 ```
+<img width="639" alt="ScreenshotRunWeb" src="https://github.com/reutlazarr/AspProject/assets/155451112/03b0c5a0-187b-4f74-af15-fe6f236562cd">
+
 
 ### Running FacebookApp
 Ensure your Android emulator is set up and configured. Open Android Studio, navigate to the FacebookApp project, and run the application using the emulator.
+<br>
+<img width="755" alt="ScreenshotRunApp" src="https://github.com/reutlazarr/AspProject/assets/155451112/dfbb7bd0-fe6f-428a-b7db-f9b88918f3b8">
 
 
 ## Additional Notes
