@@ -15,16 +15,32 @@ cd AspProject  # Make sure to be in the correct directory
 <img width="734" alt="ScreenshotRunBloomfilter" src="https://github.com/reutlazarr/AspProject/assets/155451112/4eceb507-b2d7-45fa-8eb6-6d7579faad7d">
 
 
-### Running BloomFilter with the doker
-To run BloomFilter using Docker, execute the following command. Ensure your Docker environment is set up and the BloomFilter image is available:
+### BloomFilter With Doker
+For those preferring Docker, you can pull the BloomFilter container from DockerHub. Ensure you have Docker installed and use the following command to pull the container.
 
-
-### Running Node Server
-Before starting the FacebookServer, ensure MongoDB is running at mongodb://localhost:27017:
-```bash
-mongo --eval "db.runCommand({ connectionStatus: 1 })"
+In order to build the docker, please make sure you are in the project directory, and run:
+```
+docker build -t bloom filter .
+```
+(Don't forget to add the dot in the end)
+then, run:
+```
+docker run -i -t -p 5555:5555 bloom filter
 ```
 
+Whenever we release a new version of the code, the Docker image is automatically updated on DockerHub. If you intersted, you can download and run the Docker image with Docker Desktop, which will set up a BloomFilter server. Below are screenshots to guide you:
+
+![Screenshot 2024-04-30 213656](https://github.com/reutlazarr/AspProject/assets/132810027/0f90e9e5-1c63-4d19-bbf9-78c5dd9f26e4)
+
+![Screenshot 2024-04-30 222026](https://github.com/reutlazarr/AspProject/assets/132810027/f74e7f63-b50d-4fe5-a254-50bda4d0fef3)
+
+![Screenshot 2024-04-30 222047](https://github.com/reutlazarr/AspProject/assets/132810027/2fec4241-0101-47f2-9187-17426aa7e56b)
+
+![Screenshot 2024-04-30 232320](https://github.com/reutlazarr/AspProject/assets/132810027/84fde50b-1359-45ca-8565-e304767b23d2)
+
+![Screenshot 2024-04-30 232333](https://github.com/reutlazarr/AspProject/assets/132810027/332e96bf-2a57-4c34-b9ed-b1af8e2760da)
+
+### Running Node Server
 Start the FacebookServer by ensuring you are in the server directory and then executing the start command:
 ```bash
 cd FacebookServer  # Make sure to be in the correct directory
